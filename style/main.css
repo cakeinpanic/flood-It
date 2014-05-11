@@ -27,8 +27,8 @@ body,html{
 	margin: 50px auto;
 }
 .tile{
-	width:65px;
-	height: 65px;
+	width:43px;
+	height: 43px;
 	display:inline-block;
 
 	background: red;

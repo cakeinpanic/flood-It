@@ -159,5 +159,5 @@ function getRandomInt (min, max) {
 }
 window.onload=function(){
 
-startGame(8);
+startGame(12);
 }
