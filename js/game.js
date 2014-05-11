@@ -9,7 +9,7 @@ var $gameField= $('.game-field')[0];
 var $colorPanel= $('.color-panel')[0];
 var $schemePanel= $('.mini-color-scheme-wrapper')[0];
 var capturedTiles=new Array();
-var currentoColor;
+var currentColor=null;
 var steps=0;
 var buttons=new Array();
 
@@ -33,9 +33,8 @@ function startGame(gameSize){
 	}
 	capturedTiles.push(grid.getTile(0,0));
 	grid.getTile(0,0).capture();
-	currentColor= capturedTiles[0].color;
 
-	onColorChanged(currentColor);
+	onColorChanged(capturedTiles[0].colorId);
 
 	for (i=0; i<numColors; i++) {
 		var btn=document.createElement("div");
