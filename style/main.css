@@ -81,7 +81,7 @@ body,html{
 	display:inline-block;
 }
 .mini-color-scheme-wrapper{
-	position:absolute;
+	/*position:absolute;*/
 	bottom:0;
 	width: 100%;
 }

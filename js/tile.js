@@ -1,9 +1,11 @@
-function Tile(obj, position,  colorId) {
+function Tile(obj, position,  colorId, colorScheme, colorSchemeId) {
   this.x                = position[0];
   this.y                = position[1];
   this.colorId          = colorId;
   this.obj              = obj;
   this.captured         = false;
+  this.colorScheme      = colorScheme;
+  this.colorSchemeId    = colorSchemeId;
   this.setColor(this.colorId);
 }
 
@@ -12,7 +14,7 @@ Tile.prototype.setColor= function (colorId) {
   this.updateColor();
 }
 Tile.prototype.updateColor= function () {
-  var color=colorScheme[colorSchemeId][this.colorId];
+  var color=this.colorScheme[this.colorSchemeId][this.colorId];
   this.obj.setAttribute("style","background-color:"+ color);
 }
 
