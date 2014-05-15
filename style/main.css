@@ -6,7 +6,6 @@ body,html{
 	background: #0F2124;
 }
 .winfield{
-
 	position:absolute;
 	top:0;
 	bottom:0;
@@ -26,16 +25,25 @@ body,html{
 	width:650px;
 	margin: 50px auto;
 }
+
+.score{
+	color:white;
+	font-family: Lato, sans;
+	font-size: 26px;
+	font-weight: 300;
+	text-align: center;
+	margin-bottom:15px;
+}
 .tile{
 	width:43px;
 	height: 43px;
-	display:inline-block;
-
+	display:block;
+	float:left;
 	background: red;
-	margin:1px;
 	padding:0;
-	margin:-2px 0;
+	transition: all .4s;
 }
+
 .grid-row
 {
 	display: block;
@@ -46,6 +54,8 @@ body,html{
 
 .game-field{
 	margin: 0px auto;
+	width:516px;
+	height:516px;
 	position:relative;
 	display: inline-block;
 
@@ -55,7 +65,7 @@ body,html{
 	margin-left: 40px;
 	display: inline-block;
 	vertical-align: top;
-	margin-top: 25px;
+	margin-top: 13px;
 	cursor: pointer;
 
 }
@@ -81,7 +91,7 @@ body,html{
 	display:inline-block;
 }
 .mini-color-scheme-wrapper{
-	position:absolute;
-	bottom:0;
+
+	margin: 10px auto 0;
 	width: 100%;
 }
