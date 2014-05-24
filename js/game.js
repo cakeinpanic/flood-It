@@ -97,7 +97,6 @@ function Game(gameSize,colorScheme){
 
 		this.capturedTiles.push(this.grid.getTile(0,0));
 		this.grid.getTile(0,0).capture();
-		console.log(this);
 		this.onColorChanged(this.capturedTiles[0].colorId);
 
 		for (i=0; i<numColors; i++) {
