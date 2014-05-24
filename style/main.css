@@ -1,0 +1,123 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic);
+@import url(http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic|Fredericka+the+Great|Acme|Amaranth:400,700italic,700,400italic|Enriqueta:400,700);
+
+body,html{
+	margin:0;
+	padding:0;
+	background: #0F2124;
+}
+.side-menu{
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	
+	list-style: none;
+	padding:0;
+	
+}
+.side-menu li{
+	
+	display: block;
+	padding: 5px;
+	padding-left:10px;
+	margin: 10px 0;
+	font-family: 'Enriqueta', serif;
+	background: rgba(0,0,0,.4);
+	color :white;
+	font-size: 13px;
+	text-align: right;
+}
+.game-name{
+	font-size: 22px!important;
+	padding: 5px 20px!important;
+}
+.winfield{
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	background: rgba(0,0,0,.3);
+	text-align: center;
+	padding-top:45%;
+	font-family: 'Lato', serif;
+	font-weight: 400;
+	font-style: italic;
+	font-size: 40px;
+	color:white;
+
+}
+.wrapper{
+	width:780px;
+	margin: 50px auto;
+}
+
+.score{
+	color:white;
+	font-family: 'Enriqueta', serif;
+	font-size: 26px;
+	font-weight: 300;
+	text-align: center;
+	margin-bottom:15px;
+}
+.tile{
+	width:43px;
+	height: 43px;
+	display:block;
+	float:left;
+	background: red;
+	padding:0;
+	transition: all .4s;
+}
+
+.grid-row
+{
+	display: block;
+	position: relative;
+	margin:0;
+	padding:0;
+}
+
+.game-field{
+	margin: 0px auto;
+	width:516px;
+	height:516px;
+	position:relative;
+	display: inline-block;
+
+}
+
+.color-panel{
+	margin-left: 40px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 13px;
+	cursor: pointer;
+
+}
+
+.color-btn{
+	width:80px;
+	height:80px;
+	border-radius: 40px;
+	display:block;
+	margin: 10px 0;
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
+}
+
+.mini-color-scheme{
+	position: relative;
+	display:inline-block;
+	margin: 0 10px 10px;
+	cursor: pointer;
+}
+.mini-color-scheme-tile{
+	width:22px;
+	height:13px;
+	display:inline-block;
+}
+.mini-color-scheme-wrapper{
+
+	margin: 10px 115px;
+	
+}
