@@ -6,6 +6,8 @@ var	colorScheme1 		=[["#57385C", "#A75265", "#EC7263", "#FEBE7E","#FFEDBC"],
 
 
 window.onload=function(){
+	var $wrapper= $('.wrapper')[0];
 	var a=new Game(12,colorScheme1);
 	a.startGame();
+	$wrapper.classList.remove("disabled")
 }

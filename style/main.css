@@ -6,6 +6,19 @@ body,html{
 	padding:0;
 	background: #0F2124;
 }
+.cf:before,.cf:after {
+   content: "";
+   display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+   zoom: 1;
+}
+
 .side-menu{
 	position: relative;
 	display: inline-block;
@@ -13,23 +26,41 @@ body,html{
 	
 	list-style: none;
 	padding:0;
-	
+	margin:0;
+	margin-left: -5px;
 }
+
 .side-menu li{
-	
 	display: block;
-	padding: 5px;
-	padding-left:10px;
-	margin: 10px 0;
+	margin: 15px 0;
+	
+	cursor: pointer;
+	text-align: right;
+}
+.side-menu li span{
+	
 	font-family: 'Enriqueta', serif;
 	background: rgba(0,0,0,.4);
 	color :white;
 	font-size: 13px;
+	padding: 5px 14px 5px 10px;
 	text-align: right;
+	font-size: 15px; 
+	
+}
+.arrow{
+	margin-top:300px!important;
+}
+.rules{
+	cursor: pointer;
+}
+.rulesfield{
+
 }
 .game-name{
-	font-size: 22px!important;
-	padding: 5px 20px!important;
+	font-size: 26px!important;
+	//padding: 5px 20px!important;
+	cursor: default;
 }
 .winfield{
 	position:absolute;
@@ -50,8 +81,15 @@ body,html{
 .wrapper{
 	width:780px;
 	margin: 50px auto;
+	opacity:1;
+	transition: opacity .1s;
 }
-
+.disabled{
+	opacity:0;
+}
+.disabled .side-menu{
+	//position: absolute;
+}
 .score{
 	color:white;
 	font-family: 'Enriqueta', serif;
@@ -61,13 +99,22 @@ body,html{
 	margin-bottom:15px;
 }
 .tile{
-	width:43px;
-	height: 43px;
 	display:block;
 	float:left;
 	background: red;
 	padding:0;
 	transition: all .4s;
+}
+
+.tile-12{
+	width:43px;
+	height: 43px;
+}
+
+.tile-24{
+	width:22px;
+	height: 22px;
+
 }
 
 .grid-row
@@ -77,14 +124,28 @@ body,html{
 	margin:0;
 	padding:0;
 }
+.rulesfield{
+	top:50px;
+	left:200px;
+	width:550px;
+	height:516px;
+	position:absolute;
+	background: rgba(0,0,0,.8);
+	display: inline-block;
+}
 
 .game-field{
 	margin: 0px auto;
-	width:516px;
-	height:516px;
+	width:528px;
+	height:528px;
 	position:relative;
 	display: inline-block;
 
+}
+.game-field-wrapper{
+	position: relative;
+	width:100%;
+	height: 100%;
 }
 
 .color-panel{

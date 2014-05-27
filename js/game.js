@@ -10,14 +10,67 @@ function Game(gameSize,colorScheme){
 	this.colorSchemeId  = 0;
 
 	var	gameSize 			= gameSize,
+		numColors 			= this.colorScheme[this.colorSchemeId].length;
 		self 				= this,
 		maxSteps 			= 20,
 		$gameField 			= $('.game-field')[0],
 		$colorPanel 		= $('.color-panel')[0],
 		$score  			= $('.score')[0],
+		$upBtn				= $('.up')[0],
+		$downBtn			= $('.down')[0],
 		$schemePanel 		= $('.mini-color-scheme-wrapper')[0];
 
 
+	this.drawGameField=function(){
+		for (var i=0; i<gameSize; i++) {
+			var row= document.createElement("ul");
+			row.setAttribute("class", "grid-row cf");
+			$gameField.appendChild(row);
+			this.grid.addRow(new Array);
+
+			for (var j=0; j<gameSize; j++)
+				{
+					var tileObj= document.createElement("li");
+					tileObj.classList.add("tile");
+					if (gameSize==24)
+						tileObj.classList.add("tile-24");
+					else
+						tileObj.classList.add("tile-12");
+					row.appendChild(tileObj);
+					var newTile= new Tile(tileObj, [j, i], getRandomInt(0,numColors-1), this);
+					this.grid.addTileToRow(i,newTile);
+				}
+		}
+
+		this.capturedTiles.push(this.grid.getTile(0,0));
+		this.grid.getTile(0,0).capture();
+		this.onColorChanged(this.capturedTiles[0].colorId);
+
+	}
+
+	this.increaseLevel= function(){
+		console.log($gameField);
+		$($gameField).empty();
+		
+		gameSize=24;
+		this.grid=  new Grid(gameSize);
+		this.capturedTiles= new Array();
+		this.steps=0;
+		this.drawGameField();
+	}
+
+	this.decreaseLevel= function(){
+		console.log(this.$gameField);
+		$($gameField).empty();
+		gameSize=12;
+		this.grid=  new Grid(gameSize);
+		this.capturedTiles= new Array();
+		this.steps=0;	
+		this.drawGameField();
+	}
+
+	$upBtn.onclick = this.increaseLevel.bind(this);
+	$downBtn.onclick = this.decreaseLevel.bind(this);
 
 	this.getAllNewTiles = function(tiles, newColor) {
 
@@ -46,6 +99,7 @@ function Game(gameSize,colorScheme){
 
 	this.changeColorScheme= function(newColorSchemeId) {
 		this.colorSchemeId=newColorSchemeId;
+		numColors=this.colorScheme[this.colorSchemeId].length;
 		this.grid.updateColors();
 		this.buttons.forEach(function(btn){
 			btn.updateColor()
@@ -74,31 +128,12 @@ function Game(gameSize,colorScheme){
 				this.finishGame();
 		}
 	}
-
+	
+	
 	this.startGame= function() {
-		var numColors=this.colorScheme[this.colorSchemeId].length;
-
-		for (var i=0; i<gameSize; i++) {
-			var row= document.createElement("ul");
-			row.setAttribute("class", "grid-row");
-			$gameField.appendChild(row);
-			//console.log(this.grid,this.grid);
-			this.grid.addRow(new Array);
-
-			for (var j=0; j<gameSize; j++)
-				{
-					var tileObj= document.createElement("li");
-					tileObj.setAttribute("class", "tile")
-					row.appendChild(tileObj);
-					var newTile= new Tile(tileObj, [j, i], getRandomInt(0,numColors-1), this);
-					this.grid.addTileToRow(i,newTile);
-				}
-		}
-
-		this.capturedTiles.push(this.grid.getTile(0,0));
-		this.grid.getTile(0,0).capture();
-		this.onColorChanged(this.capturedTiles[0].colorId);
-
+		
+		
+		this.drawGameField();
 		for (i=0; i<numColors; i++) {
 			var btn=document.createElement("div");
 			btn.setAttribute("class","color-btn");
