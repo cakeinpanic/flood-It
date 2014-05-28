@@ -3,16 +3,18 @@ function Game(gameSize,colorScheme){
 	this.grid 			= null;
 	this.buttons		= new Array();
 	this.gameOn			= true;
-	this.steps			= 0;
+	this.steps			= -1;
 	this.currentColor  	= null;
 	this.capturedTiles  = null;
 	this.colorScheme    = colorScheme;
 	this.colorSchemeId  = 0;
+	this.maxSteps 		= 1;
+	this.winField 		= null;
+	this.restartBtn		= null;
 
 	var	gameSize 			= gameSize,
 		numColors 			= this.colorScheme[this.colorSchemeId].length;
 		self 				= this,
-		maxSteps 			= 20,
 		$gameField 			= $('.game-field')[0],
 		$colorPanel 		= $('.color-panel')[0],
 		$score  			= $('.score')[0],
@@ -27,7 +29,7 @@ function Game(gameSize,colorScheme){
 		$($gameField).empty();
 		this.grid=  new Grid(gameSize);
 		this.capturedTiles= new Array();
-		this.steps=0;
+		this.steps=-1;
 		this.currentColor=null;
 
 		for (var i=0; i<gameSize; i++) {
@@ -57,9 +59,10 @@ function Game(gameSize,colorScheme){
 	}
 
 	this.restartGame=function(){
-		
+		if (this.winField) {this.winField.removeChild(this.restartBtn); $gameField.removeChild(this.winField);}
+		this.gameOn=true;
 		this.capturedTiles= new Array();
-		this.steps=0;
+		this.steps=-1;
 		this.currentColor=null;
 		for (var i=0; i<gameSize; i++) {
 			for (var j=0; j<gameSize; j++)
@@ -67,7 +70,7 @@ function Game(gameSize,colorScheme){
 					this.grid.getTile(i,j).setColor(getRandomInt(0,numColors-1));
 				}
 		}
-		
+
 		this.capturedTiles.push(this.grid.getTile(0,0));
 		this.grid.getTile(0,0).capture();
 		this.onColorChanged(this.capturedTiles[0].colorId);
@@ -108,12 +111,29 @@ function Game(gameSize,colorScheme){
 		return newlyAdded;
 	}
 
-	this.finishGame= function() {
+	this.finishGame= function(win) {
 		this.gameOn=false;
-		var winField=document.createElement("div");
-		winField.classList.add("winfield");
-		winField.innerHTML="You won in "+this.steps+" steps";
-		$gameField.appendChild(winField);
+		if (!this.winField){
+			this.winField=document.createElement("div");
+			this.winField.classList.add("winfield");
+		}
+
+		if (win){
+			this.winField.innerHTML="You won in "+this.steps+" steps";
+		}
+		else
+		{
+			this.winField.innerHTML="You exceeded the number of steps";
+			if (!this.restartBtn){
+				this.restartBtn= document.createElement("div");
+				this.restartBtn.innerHTML="Restart";
+				this.restartBtn.classList.add("restart-btn");
+				
+			}
+			this.winField.appendChild(this.restartBtn);
+			this.restartBtn.onclick=this.restartGame.bind(this);
+		}
+		$gameField.appendChild(this.winField);
 	}
 
 	this.changeColorScheme= function(newColorSchemeId) {
@@ -129,7 +149,7 @@ function Game(gameSize,colorScheme){
 
 			this.currentColor=newColor;
 			this.steps++;
-			$score.innerHTML=this.steps+"/"+maxSteps;
+			$score.innerHTML=this.steps+"/"+this.maxSteps;
 			var newTiles=this.getAllNewTiles(this.capturedTiles, newColor);
 
 			for (var j=0; j< newTiles.length; j++) {
@@ -143,8 +163,9 @@ function Game(gameSize,colorScheme){
 			for (i=0; i<this.capturedTiles.length; i++)
 				this.capturedTiles[i].setColor(newColor);
 
-			if (this.capturedTiles.length==this.grid.numTiles)
-				this.finishGame();
+			var tilesLeft=this.grid.numTiles-this.capturedTiles.length;
+			if (this.steps==this.maxSteps || tilesLeft==0)
+				this.finishGame(tilesLeft==0);
 		}
 	}
 	

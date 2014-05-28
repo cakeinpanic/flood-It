@@ -37,7 +37,7 @@ body,html{
 	cursor: pointer;
 	text-align: right;
 }
-.side-menu li span{
+.btn{
 	
 	font-family: 'Enriqueta', serif;
 	background: rgba(0,0,0,.4);
@@ -46,7 +46,18 @@ body,html{
 	padding: 5px 14px 5px 10px;
 	text-align: right;
 	font-size: 15px; 
-	
+	cursor: pointer;
+}
+.restart-btn{
+	font-family: 'Enriqueta', serif;
+	background: rgba(0,0,0,.9);
+	color :white;
+	font-size: 13px;
+	padding: 5px 14px 5px 10px;
+	cursor: pointer;
+	font-size: 20px; 
+	width:64px;
+	margin: 10px auto;
 }
 .restart{
 	cursor: pointer;
