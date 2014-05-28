@@ -1,11 +1,11 @@
 function Game(gameSize,colorScheme){
 
-	this.grid 			= new Grid(gameSize);
+	this.grid 			= null;
 	this.buttons		= new Array();
 	this.gameOn			= true;
 	this.steps			= 0;
 	this.currentColor  	= null;
-	this.capturedTiles  = new Array();
+	this.capturedTiles  = null;
 	this.colorScheme    = colorScheme;
 	this.colorSchemeId  = 0;
 
@@ -18,10 +18,18 @@ function Game(gameSize,colorScheme){
 		$score  			= $('.score')[0],
 		$upBtn				= $('.up')[0],
 		$downBtn			= $('.down')[0],
+		$restart			= $('.restart')[0],
 		$schemePanel 		= $('.mini-color-scheme-wrapper')[0];
 
 
 	this.drawGameField=function(){
+
+		$($gameField).empty();
+		this.grid=  new Grid(gameSize);
+		this.capturedTiles= new Array();
+		this.steps=0;
+		this.currentColor=null;
+
 		for (var i=0; i<gameSize; i++) {
 			var row= document.createElement("ul");
 			row.setAttribute("class", "grid-row cf");
@@ -48,29 +56,40 @@ function Game(gameSize,colorScheme){
 
 	}
 
-	this.increaseLevel= function(){
-		console.log($gameField);
-		$($gameField).empty();
+	this.restartGame=function(){
 		
-		gameSize=24;
-		this.grid=  new Grid(gameSize);
 		this.capturedTiles= new Array();
 		this.steps=0;
+		this.currentColor=null;
+		for (var i=0; i<gameSize; i++) {
+			for (var j=0; j<gameSize; j++)
+				{
+					this.grid.getTile(i,j).setColor(getRandomInt(0,numColors-1));
+				}
+		}
+		
+		this.capturedTiles.push(this.grid.getTile(0,0));
+		this.grid.getTile(0,0).capture();
+		this.onColorChanged(this.capturedTiles[0].colorId);
+
+	}
+
+	this.increaseLevel= function(){
+		console.log($gameField);
+
+		gameSize=24;
 		this.drawGameField();
 	}
 
 	this.decreaseLevel= function(){
 		console.log(this.$gameField);
-		$($gameField).empty();
 		gameSize=12;
-		this.grid=  new Grid(gameSize);
-		this.capturedTiles= new Array();
-		this.steps=0;	
 		this.drawGameField();
 	}
 
 	$upBtn.onclick = this.increaseLevel.bind(this);
 	$downBtn.onclick = this.decreaseLevel.bind(this);
+	$restart.onclick = this.restartGame.bind(this);
 
 	this.getAllNewTiles = function(tiles, newColor) {
 
@@ -132,8 +151,8 @@ function Game(gameSize,colorScheme){
 	
 	this.startGame= function() {
 		
-		
 		this.drawGameField();
+
 		for (i=0; i<numColors; i++) {
 			var btn=document.createElement("div");
 			btn.setAttribute("class","color-btn");

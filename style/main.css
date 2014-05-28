@@ -48,7 +48,11 @@ body,html{
 	font-size: 15px; 
 	
 }
-.arrow{
+.restart{
+	cursor: pointer;
+	text-align: right;
+}
+.gap{
 	margin-top:300px!important;
 }
 .rules{
@@ -103,7 +107,7 @@ body,html{
 	float:left;
 	background: red;
 	padding:0;
-	transition: all .4s;
+	transition: all .1s;
 }
 
 .tile-12{
