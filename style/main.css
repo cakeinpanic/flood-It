@@ -19,6 +19,10 @@ body,html{
    zoom: 1;
 }
 
+
+.github-btn{
+	margin-right: -9px;
+}
 .side-menu{
 	position: relative;
 	display: inline-block;
@@ -27,7 +31,7 @@ body,html{
 	list-style: none;
 	padding:0;
 	margin:0;
-	margin-left: -5px;
+	margin-right: -3px;
 }
 
 .side-menu li{
@@ -59,9 +63,11 @@ body,html{
 	width:64px;
 	margin: 10px auto;
 }
+
 .restart{
 	cursor: pointer;
 	text-align: right;
+	background: url('M55.49,50.002l21.326,21.326l21.329-21.326l-8.832-8.836l-6.368,6.371C81.657,26.293,64.02,9.395,42.459,9.395     c-22.39,0-40.604,18.217-40.604,40.607c0,22.389,18.215,40.604,40.604,40.604h15.616V78.111H42.459     c-15.504,0-28.11-12.609-28.11-28.109c0-15.505,12.606-28.114,28.11-28.114c14.521,0,26.356,11.097,27.82,25.233l-5.956-5.955     L55.49,50.002z')!important
 }
 .gap{
 	margin-top:300px!important;
@@ -164,7 +170,7 @@ body,html{
 }
 
 .color-panel{
-	margin-left: 40px;
+	margin-left: 30px;
 	display: inline-block;
 	vertical-align: top;
 	margin-top: 13px;
@@ -186,6 +192,9 @@ body,html{
 	display:inline-block;
 	margin: 0 10px 10px;
 	cursor: pointer;
+}
+.mini-color-scheme:hover{
+	opacity: .8;
 }
 .mini-color-scheme-tile{
 	width:22px;
