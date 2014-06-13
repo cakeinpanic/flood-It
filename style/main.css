@@ -1,6 +1,20 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic);
-@import url(http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic|Fredericka+the+Great|Acme|Amaranth:400,700italic,700,400italic|Enriqueta:400,700);
 
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-olm8wj');
+	src:url('fonts/icomoon.eot?#iefix-olm8wj') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-olm8wj') format('woff'),
+		url('fonts/icomoon.ttf?-olm8wj') format('truetype'),
+		url('fonts/icomoon.svg?-olm8wj#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic);
+@import url(icomoon.ttf);
+@import url(http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic|Fredericka+the+Great|Acme|Amaranth:400,700italic,700,400italic|Enriqueta:400,700);
+@import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(http://fonts.googleapis.com/css?family=Wire+One);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow&subset=latin,cyrillic-ext);
 body,html{
 	margin:0;
 	padding:0;
@@ -19,7 +33,6 @@ body,html{
    zoom: 1;
 }
 
-
 .github-btn{
 	margin-right: -9px;
 }
@@ -31,7 +44,7 @@ body,html{
 	list-style: none;
 	padding:0;
 	margin:0;
-	margin-right: -3px;
+	margin-right: -7px;
 }
 
 .side-menu li{
@@ -43,7 +56,7 @@ body,html{
 }
 .btn{
 	
-	font-family: 'Enriqueta', serif;
+	font-family: 'PT Sans Narrow', sans-serif;
 	background: rgba(0,0,0,.4);
 	color :white;
 	font-size: 13px;
@@ -51,23 +64,23 @@ body,html{
 	text-align: right;
 	font-size: 15px; 
 	cursor: pointer;
+	border-radius: 5px;
 }
-.restart-btn{
-	font-family: 'Enriqueta', serif;
-	background: rgba(0,0,0,.9);
-	color :white;
-	font-size: 13px;
-	padding: 5px 14px 5px 10px;
-	cursor: pointer;
-	font-size: 20px; 
-	width:64px;
-	margin: 10px auto;
-}
-
 .restart{
 	cursor: pointer;
 	text-align: right;
-	background: url('M55.49,50.002l21.326,21.326l21.329-21.326l-8.832-8.836l-6.368,6.371C81.657,26.293,64.02,9.395,42.459,9.395     c-22.39,0-40.604,18.217-40.604,40.607c0,22.389,18.215,40.604,40.604,40.604h15.616V78.111H42.459     c-15.504,0-28.11-12.609-28.11-28.109c0-15.505,12.606-28.114,28.11-28.114c14.521,0,26.356,11.097,27.82,25.233l-5.956-5.955     L55.49,50.002z')!important
+	font-family: 'icomoon';
+	padding-top:7px;
+	padding-bottom: 7px;
+}
+.winfield .restart{
+	text-align: center;
+	font-style: normal;
+	line-height: 60px;
+
+}
+.restart:before{
+	content: "\61";
 }
 .gap{
 	margin-top:300px!important;
@@ -83,6 +96,7 @@ body,html{
 	//padding: 5px 20px!important;
 	cursor: default;
 }
+
 .winfield{
 	position:absolute;
 	top:0;
@@ -92,10 +106,12 @@ body,html{
 	background: rgba(0,0,0,.3);
 	text-align: center;
 	padding-top:45%;
-	font-family: 'Lato', serif;
+	//font-family: 'Enriqueta', serif;
+	//font-family: 'Permanent Marker', cursive;
+	font-family: 'PT Sans Narrow', sans-serif;
 	font-weight: 400;
-	font-style: italic;
-	font-size: 40px;
+	//font-style: italic;
+	font-size: 29px;
 	color:white;
 
 }
@@ -113,7 +129,8 @@ body,html{
 }
 .score{
 	color:white;
-	font-family: 'Enriqueta', serif;
+	font-family: 'PT Sans Narrow', sans-serif;
+
 	font-size: 26px;
 	font-weight: 300;
 	text-align: center;
@@ -128,8 +145,8 @@ body,html{
 }
 
 .tile-12{
-	width:43px;
-	height: 43px;
+	width:44px;
+	height: 44px;
 }
 
 .tile-24{

@@ -126,8 +126,9 @@ function Game(gameSize,colorScheme){
 			this.winField.innerHTML="You exceeded the number of steps";
 			if (!this.restartBtn){
 				this.restartBtn= document.createElement("div");
-				this.restartBtn.innerHTML="Restart";
-				this.restartBtn.classList.add("restart-btn");
+				//this.restartBtn.innerHTML="Restart";
+				//this.restartBtn.classList.add("restart-btn");
+				this.restartBtn.classList.add("restart");
 				
 			}
 			this.winField.appendChild(this.restartBtn);
