@@ -8,7 +8,7 @@ function Game(gameSize,colorScheme){
 	this.capturedTiles  = null;
 	this.colorScheme    = colorScheme;
 	this.colorSchemeId  = 0;
-	this.maxSteps 		= 1;
+	this.maxSteps 		= 20;
 	this.winField 		= null;
 	this.restartBtn		= null;
 
@@ -178,6 +178,7 @@ function Game(gameSize,colorScheme){
 		for (i=0; i<numColors; i++) {
 			var btn=document.createElement("div");
 			btn.setAttribute("class","color-btn");
+			btn.classList.add("animation-order-"+(i+1));
 			var newBtn=new Button(btn, i, this);
 			this.buttons.push(newBtn);
 			$colorPanel.appendChild(btn);

@@ -9,30 +9,34 @@
 	font-weight: normal;
 	font-style: normal;
 }
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic);
-@import url(icomoon.ttf);
-@import url(http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic|Fredericka+the+Great|Acme|Amaranth:400,700italic,700,400italic|Enriqueta:400,700);
-@import url(http://fonts.googleapis.com/css?family=Abel);
-@import url(http://fonts.googleapis.com/css?family=Wire+One);
+
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow&subset=latin,cyrillic-ext);
+
 body,html{
 	margin:0;
 	padding:0;
 	background: #0F2124;
 }
-.cf:before,.cf:after {
-   content: "";
-   display: table;
+.wrapper{
+	display: block;;
+	text-align: center;;
+	margin: 50px;
+	opacity:1;
+	transition: opacity .1s;
+	transition-delay:.1s;
 }
-
-.cf:after {
-  clear: both;
+.right-col{
+	display: inline-block;
+	vertical-align: top;
 }
-
-.cf {
-   zoom: 1;
+.left-col{
+	display: inline-block;
+	vertical-align: top;
 }
-
+.center-col{
+	display: inline-block;
+	vertical-align: top;
+}
 .github-btn{
 	margin-right: -9px;
 }
@@ -88,12 +92,9 @@ body,html{
 .rules{
 	cursor: pointer;
 }
-.rulesfield{
 
-}
 .game-name{
 	font-size: 26px!important;
-	//padding: 5px 20px!important;
 	cursor: default;
 }
 
@@ -115,18 +116,7 @@ body,html{
 	color:white;
 
 }
-.wrapper{
-	width:780px;
-	margin: 50px auto;
-	opacity:1;
-	transition: opacity .1s;
-}
-.disabled{
-	opacity:0;
-}
-.disabled .side-menu{
-	//position: absolute;
-}
+
 .score{
 	color:white;
 	font-family: 'PT Sans Narrow', sans-serif;
@@ -192,7 +182,6 @@ body,html{
 	vertical-align: top;
 	margin-top: 13px;
 	cursor: pointer;
-
 }
 
 .color-btn{
@@ -202,6 +191,9 @@ body,html{
 	display:block;
 	margin: 10px 0;
 	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
+	transition: all 2s;
+	
+	opacity: 1;
 }
 
 .mini-color-scheme{
@@ -220,6 +212,57 @@ body,html{
 }
 .mini-color-scheme-wrapper{
 
-	margin: 10px 115px;
+	margin: 10px auto;
 	
+}
+
+li{
+	transition: margin .5s;
+}
+.cf:before,.cf:after {
+   content: "";
+   display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+   zoom: 1;
+}
+
+.d{
+	//opacity:0;
+}
+.d .color-btn{
+	opacity: 0;
+}
+.d li{
+	margin-right: -90px;
+}
+
+.animation-order-1
+{
+	transition-delay: 0s;
+}
+.animation-order-2
+{
+	transition-delay: .1s;
+}
+.animation-order-3
+{
+	transition-delay: .2s;
+}
+.animation-order-4
+{
+	transition-delay: .3s;
+}
+.animation-order-5
+{
+	transition-delay: .4s;
+}
+.animation-order-6
+{
+	transition-delay: .5s;
 }
