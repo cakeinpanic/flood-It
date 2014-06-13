@@ -16,6 +16,7 @@ function Game(gameSize,colorScheme){
 		numColors 			= this.colorScheme[this.colorSchemeId].length;
 		self 				= this,
 		$gameField 			= $('.game-field')[0],
+		$rules	 			= $('.rules')[0],
 		$colorPanel 		= $('.color-panel')[0],
 		$score  			= $('.score')[0],
 		$upBtn				= $('.up')[0],

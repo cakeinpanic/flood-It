@@ -36,6 +36,7 @@ body,html{
 .center-col{
 	display: inline-block;
 	vertical-align: top;
+	position: relative;
 }
 .github-btn{
 	margin-right: -9px;
@@ -218,7 +219,7 @@ body,html{
 }
 
 li{
-	transition: margin .5s;
+	transition: all .5s;
 }
 .cf:before,.cf:after {
    content: "";
@@ -268,3 +269,23 @@ li{
 {
 	transition-delay: .5s;
 }
+
+@-webkit-keyframes rules-an
+{
+0% {background-image: url('rules-1.jpg');}
+50% {background-image: url('rules-2.jpg');}
+100% {background-image: url('rules-3.jpg');}
+}
+.game-rules{
+	width:300px;
+	height:300px;
+	top:0;
+	left:0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-animation: rules-an 3s infinite;
+	position: absolute;
+	background-color: rgba(0,0,0,.8);
+}
+
+
