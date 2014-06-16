@@ -59,7 +59,10 @@ function Game(gameSize,colorScheme){
 	}
 
 	this.restartGame=function(){
-		if (this.winField) {this.winField.removeChild(this.restartBtn); $gameField.removeChild(this.winField);}
+		if (this.winField) {
+			this.winField.removeChild(this.restartBtn);
+			$gameField.removeChild(this.winField);
+		}
 		this.gameOn=true;
 		this.capturedTiles= new Array();
 		this.steps=-1;
@@ -117,23 +120,23 @@ function Game(gameSize,colorScheme){
 			this.winField=document.createElement("div");
 			this.winField.classList.add("winfield");
 		}
-
+		if (!this.restartBtn){
+			this.restartBtn= document.createElement("div");
+			//this.restartBtn.innerHTML="Restart";
+			//this.restartBtn.classList.add("restart-btn");
+			this.restartBtn.classList.add("restart");		
+		}
 		if (win){
 			this.winField.innerHTML="You won in "+this.steps+" steps";
 		}
 		else
 		{
 			this.winField.innerHTML="You exceeded the number of steps";
-			if (!this.restartBtn){
-				this.restartBtn= document.createElement("div");
-				//this.restartBtn.innerHTML="Restart";
-				//this.restartBtn.classList.add("restart-btn");
-				this.restartBtn.classList.add("restart");
-				
-			}
-			this.winField.appendChild(this.restartBtn);
-			this.restartBtn.onclick=this.restartGame.bind(this);
 		}
+		
+		this.winField.appendChild(this.restartBtn);
+		this.restartBtn.onclick=this.restartGame.bind(this);
+
 		$gameField.appendChild(this.winField);
 	}
 
