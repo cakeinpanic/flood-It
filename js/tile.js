@@ -20,6 +20,9 @@ function Tile(obj, position,  colorId,game) {
   this.capture=function() {
     this.captured=true;
   }
+  this.unCapture=function() {
+    this.captured=false;
+  }
   this.toString=function() {
     return this.x+","+this.y+","+this.color;
   }

@@ -68,6 +68,7 @@ function Game(gameSize,colorScheme){
 			for (var j=0; j<gameSize; j++)
 				{
 					this.grid.getTile(i,j).setColor(getRandomInt(0,numColors-1));
+					this.grid.getTile(i,j).unCapture();
 				}
 		}
 
@@ -78,8 +79,6 @@ function Game(gameSize,colorScheme){
 	}
 
 	this.increaseLevel= function(){
-		console.log($gameField);
-
 		gameSize=24;
 		this.drawGameField();
 	}
@@ -95,16 +94,17 @@ function Game(gameSize,colorScheme){
 	$restart.onclick = this.restartGame.bind(this);
 
 	this.getAllNewTiles = function(tiles, newColor) {
-
+		console.log(this);
 		var newlyAdded=new Array;
 		for (var i=0; i< tiles.length; i++) {
+		
+			var sameColorRelatives=checkForColor(getRelatives(tiles[i]), newColor);
+			captureTiles(sameColorRelatives);
+			newlyAdded=newlyAdded.concat(sameColorRelatives);
 
-			var temp=checkForColor(getRelatives(tiles[i]), newColor);
-			captureTiles(temp);
-			newlyAdded=newlyAdded.concat(temp);
-			if (temp.length>0) {
-				var temp2=this.getAllNewTiles(temp, newColor);
-				newlyAdded=newlyAdded.concat(temp2);
+			if (sameColorRelatives.length>0) {
+				var relativesOfRelative=this.getAllNewTiles(sameColorRelatives, newColor);
+				newlyAdded=newlyAdded.concat(relativesOfRelative);
 			}
 
 		}
@@ -146,12 +146,15 @@ function Game(gameSize,colorScheme){
 		});
 	}
 	this.onColorChanged= function(newColor) {
+		
 		if (this.gameOn && newColor!=this.currentColor) {
 
 			this.currentColor=newColor;
 			this.steps++;
 			$score.innerHTML=this.steps+"/"+this.maxSteps;
+			console.log(this.capturedTiles);
 			var newTiles=this.getAllNewTiles(this.capturedTiles, newColor);
+
 
 			for (var j=0; j< newTiles.length; j++) {
 				var k=true;
