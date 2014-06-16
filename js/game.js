@@ -18,7 +18,7 @@ function Game(gameSize,colorScheme){
 		$gameField 			= $('.game-field')[0],
 		$rules	 			= $('.rules')[0],
 		$colorPanel 		= $('.color-panel')[0],
-		$score  			= $('.score')[0],
+		$score  			= $('.score'),
 		$upBtn				= $('.up')[0],
 		$downBtn			= $('.down')[0],
 		$restart			= $('.restart')[0],
@@ -92,10 +92,13 @@ function Game(gameSize,colorScheme){
 		gameSize=12;
 		this.drawGameField();
 	}
-
+	this.toggleRules= function(){
+		
+	}
 	$upBtn.onclick = this.increaseLevel.bind(this);
 	$downBtn.onclick = this.decreaseLevel.bind(this);
 	$restart.onclick = this.restartGame.bind(this);
+	$rules.onclick= this.toggleRules.bind(this);
 
 	this.getAllNewTiles = function(tiles, newColor) {
 		console.log(this);
@@ -155,8 +158,11 @@ function Game(gameSize,colorScheme){
 
 			this.currentColor=newColor;
 			this.steps++;
-			$score.innerHTML=this.steps+"/"+this.maxSteps;
-			console.log(this.capturedTiles);
+
+			for (var t=0; t<$score.length; t++){
+					$score[t].innerHTML=this.steps+"/"+this.maxSteps;
+			}
+
 			var newTiles=this.getAllNewTiles(this.capturedTiles, newColor);
 
 

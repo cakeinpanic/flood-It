@@ -24,6 +24,7 @@ body,html{
 	opacity:1;
 	transition: opacity .1s;
 	transition-delay:.1s;
+	min-width: 528px;
 }
 .right-col{
 	display: inline-block;
@@ -59,6 +60,10 @@ body,html{
 	cursor: pointer;
 	text-align: right;
 	opacity: 1;
+	transition: all .5s;
+}
+.gap{
+	margin-top:300px!important;
 }
 .btn{
 	
@@ -88,9 +93,7 @@ body,html{
 .restart:before{
 	content: "\61";
 }
-.gap{
-	margin-top:300px!important;
-}
+
 .rules{
 	cursor: pointer;
 }
@@ -98,6 +101,55 @@ body,html{
 .game-name{
 	font-size: 26px!important;
 	cursor: default;
+}
+.color-btn{
+	width:80px;
+	height:80px;
+	border-radius: 40px;
+	display:block;
+	margin: 10px 0;
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
+	transition: all 2s;
+	
+	opacity: 1;
+}
+.color-panel{
+	margin-left: 30px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 13px;
+	cursor: pointer;
+}
+
+
+@media screen and (max-width: 835px) {
+	.side-menu li{
+		display: inline-block!important;
+	}
+	.gap{
+		margin-top:inherit!important;
+	}
+	.color-btn{
+		display: inline-block;
+		margin-left: 10px;
+		margin-right: 10px;
+
+	}
+	.color-panel{
+		margin:0;
+		margin-top: -20px;
+	}
+	.no-mobile{
+		display: none;
+	}
+	.score{
+		margin-left:10px;
+	}
+}
+@media screen and (min-width: 835px) {
+.mobile{
+		display: none;
+	}
 }
 
 .winfield{
@@ -109,11 +161,7 @@ body,html{
 	background: rgba(0,0,0,.3);
 	text-align: center;
 	padding-top:45%;
-	//font-family: 'Enriqueta', serif;
-	//font-family: 'Permanent Marker', cursive;
-	font-family: 'PT Sans Narrow', sans-serif;
 	font-weight: 400;
-	//font-style: italic;
 	font-size: 29px;
 	color:white;
 
@@ -178,25 +226,7 @@ body,html{
 	height: 100%;
 }
 
-.color-panel{
-	margin-left: 30px;
-	display: inline-block;
-	vertical-align: top;
-	margin-top: 13px;
-	cursor: pointer;
-}
 
-.color-btn{
-	width:80px;
-	height:80px;
-	border-radius: 40px;
-	display:block;
-	margin: 10px 0;
-	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
-	transition: all 2s;
-	
-	opacity: 1;
-}
 
 .mini-color-scheme{
 	position: relative;
@@ -219,7 +249,7 @@ body,html{
 }
 
 li{
-	transition: all .5s;
+
 }
 .cf:before,.cf:after {
    content: "";
