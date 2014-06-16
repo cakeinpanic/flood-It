@@ -57,6 +57,7 @@ body,html{
 	
 	cursor: pointer;
 	text-align: right;
+	opacity: 1;
 }
 .btn{
 	
@@ -233,13 +234,14 @@ li{
 }
 
 .d{
-	//opacity:0;
+	opacity:0;
 }
 .d .color-btn{
 	opacity: 0;
 }
 .d li{
 	margin-right: -90px;
+	opacity: 0;
 }
 
 .animation-order-1
