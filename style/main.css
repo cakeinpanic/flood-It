@@ -23,7 +23,11 @@ body,html{
 	margin: 50px;
 	opacity:1;
 	transition: opacity .1s;
+	-webkit-transition: opacity .1s;
 	transition-delay:.1s;
+	-webkit-transition-delay:.1s;
+	-o-transition-delay:.1s;
+	-moz-transition-delay:.1s;
 	min-width: 528px;
 }
 .right-col{
@@ -61,6 +65,7 @@ body,html{
 	text-align: right;
 	opacity: 1;
 	transition: all .5s;
+	-webkit-transition: all .5s;
 }
 .gap{
 	margin-top:300px!important;
@@ -110,6 +115,7 @@ body,html{
 	margin: 10px 0;
 	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
 	transition: all 2s;
+	-webkit-transition: all 2s;
 	
 	opacity: 1;
 }
@@ -182,6 +188,7 @@ body,html{
 	background: red;
 	padding:0;
 	transition: all .1s;
+	-webkit-transition: all .1s;
 }
 
 .tile-12{
@@ -278,26 +285,44 @@ li{
 .animation-order-1
 {
 	transition-delay: 0s;
+	-webkit-transition-delay: 0s;
+	-o-transition-delay: 0s;
+	-moz-transition-delay: 0s;
 }
 .animation-order-2
 {
 	transition-delay: .1s;
+	-webkit-transition-delay: .1s;
+	-o-transition-delay: .1s;
+	-moz-transition-delay: .1s;
 }
 .animation-order-3
 {
 	transition-delay: .2s;
+	-webkit-transition-delay: .2s;
+	-o-transition-delay: .2s;
+	-moz-transition-delay: .2s;
 }
 .animation-order-4
 {
 	transition-delay: .3s;
+	-webkit-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-moz-transition-delay: .3s;
 }
 .animation-order-5
 {
 	transition-delay: .4s;
+	-webkit-transition-delay: .4s;
+	-o-transition-delay: .4s;
+	-moz-transition-delay: .4s;
 }
 .animation-order-6
 {
 	transition-delay: .5s;
+	-webkit-transition-delay: .5s;
+	-o-transition-delay: .5s;
+	-moz-transition-delay: .5s;
 }
 
 @-webkit-keyframes rules-an
@@ -306,6 +331,7 @@ li{
 50% {background-image: url('rules-2.jpg');}
 100% {background-image: url('rules-3.jpg');}
 }
+
 .game-rules{
 	width:300px;
 	height:300px;
