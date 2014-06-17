@@ -8,7 +8,7 @@ function Game(gameSize,colorScheme){
 	this.capturedTiles  = null;
 	this.colorScheme    = colorScheme;
 	this.colorSchemeId  = 0;
-	this.maxSteps 		= 1;
+	this.maxSteps 		= 20;
 	this.winField 		= null;
 	this.restartBtn		= null;
 
@@ -16,8 +16,9 @@ function Game(gameSize,colorScheme){
 		numColors 			= this.colorScheme[this.colorSchemeId].length;
 		self 				= this,
 		$gameField 			= $('.game-field')[0],
+		$rules	 			= $('.rules')[0],
 		$colorPanel 		= $('.color-panel')[0],
-		$score  			= $('.score')[0],
+		$score  			= $('.score'),
 		$upBtn				= $('.up')[0],
 		$downBtn			= $('.down')[0],
 		$restart			= $('.restart')[0],
@@ -59,7 +60,10 @@ function Game(gameSize,colorScheme){
 	}
 
 	this.restartGame=function(){
-		if (this.winField) {this.winField.removeChild(this.restartBtn); $gameField.removeChild(this.winField);}
+		if (this.winField) {
+			this.winField.removeChild(this.restartBtn);
+			$gameField.removeChild(this.winField);
+		}
 		this.gameOn=true;
 		this.capturedTiles= new Array();
 		this.steps=-1;
@@ -68,6 +72,7 @@ function Game(gameSize,colorScheme){
 			for (var j=0; j<gameSize; j++)
 				{
 					this.grid.getTile(i,j).setColor(getRandomInt(0,numColors-1));
+					this.grid.getTile(i,j).unCapture();
 				}
 		}
 
@@ -78,8 +83,6 @@ function Game(gameSize,colorScheme){
 	}
 
 	this.increaseLevel= function(){
-		console.log($gameField);
-
 		gameSize=24;
 		this.drawGameField();
 	}
@@ -89,22 +92,26 @@ function Game(gameSize,colorScheme){
 		gameSize=12;
 		this.drawGameField();
 	}
-
+	this.toggleRules= function(){
+		
+	}
 	$upBtn.onclick = this.increaseLevel.bind(this);
 	$downBtn.onclick = this.decreaseLevel.bind(this);
 	$restart.onclick = this.restartGame.bind(this);
+	$rules.onclick= this.toggleRules.bind(this);
 
 	this.getAllNewTiles = function(tiles, newColor) {
-
+		console.log(this);
 		var newlyAdded=new Array;
 		for (var i=0; i< tiles.length; i++) {
+		
+			var sameColorRelatives=checkForColor(getRelatives(tiles[i]), newColor);
+			captureTiles(sameColorRelatives);
+			newlyAdded=newlyAdded.concat(sameColorRelatives);
 
-			var temp=checkForColor(getRelatives(tiles[i]), newColor);
-			captureTiles(temp);
-			newlyAdded=newlyAdded.concat(temp);
-			if (temp.length>0) {
-				var temp2=this.getAllNewTiles(temp, newColor);
-				newlyAdded=newlyAdded.concat(temp2);
+			if (sameColorRelatives.length>0) {
+				var relativesOfRelative=this.getAllNewTiles(sameColorRelatives, newColor);
+				newlyAdded=newlyAdded.concat(relativesOfRelative);
 			}
 
 		}
@@ -117,22 +124,23 @@ function Game(gameSize,colorScheme){
 			this.winField=document.createElement("div");
 			this.winField.classList.add("winfield");
 		}
-
+		if (!this.restartBtn){
+			this.restartBtn= document.createElement("div");
+			//this.restartBtn.innerHTML="Restart";
+			//this.restartBtn.classList.add("restart-btn");
+			this.restartBtn.classList.add("restart");		
+		}
 		if (win){
 			this.winField.innerHTML="You won in "+this.steps+" steps";
 		}
 		else
 		{
 			this.winField.innerHTML="You exceeded the number of steps";
-			if (!this.restartBtn){
-				this.restartBtn= document.createElement("div");
-				this.restartBtn.innerHTML="Restart";
-				this.restartBtn.classList.add("restart-btn");
-				
-			}
-			this.winField.appendChild(this.restartBtn);
-			this.restartBtn.onclick=this.restartGame.bind(this);
 		}
+		
+		this.winField.appendChild(this.restartBtn);
+		this.restartBtn.onclick=this.restartGame.bind(this);
+
 		$gameField.appendChild(this.winField);
 	}
 
@@ -145,12 +153,18 @@ function Game(gameSize,colorScheme){
 		});
 	}
 	this.onColorChanged= function(newColor) {
+		
 		if (this.gameOn && newColor!=this.currentColor) {
 
 			this.currentColor=newColor;
 			this.steps++;
-			$score.innerHTML=this.steps+"/"+this.maxSteps;
+
+			for (var t=0; t<$score.length; t++){
+					$score[t].innerHTML=this.steps+"/"+this.maxSteps;
+			}
+
 			var newTiles=this.getAllNewTiles(this.capturedTiles, newColor);
+
 
 			for (var j=0; j< newTiles.length; j++) {
 				var k=true;
@@ -177,6 +191,7 @@ function Game(gameSize,colorScheme){
 		for (i=0; i<numColors; i++) {
 			var btn=document.createElement("div");
 			btn.setAttribute("class","color-btn");
+			btn.classList.add("animation-order-"+(i+1));
 			var newBtn=new Button(btn, i, this);
 			this.buttons.push(newBtn);
 			$colorPanel.appendChild(btn);

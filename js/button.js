@@ -10,7 +10,6 @@ function Button(obj,  colorId, game) {
   }
 
   this.ClickEvent=function(){
-    console.log(this.game);
     this.game.onColorChanged(this.colorId)
   }
 

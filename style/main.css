@@ -1,24 +1,51 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic);
-@import url(http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic|Fredericka+the+Great|Acme|Amaranth:400,700italic,700,400italic|Enriqueta:400,700);
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-olm8wj');
+	src:url('fonts/icomoon.eot?#iefix-olm8wj') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-olm8wj') format('woff'),
+		url('fonts/icomoon.ttf?-olm8wj') format('truetype'),
+		url('fonts/icomoon.svg?-olm8wj#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow&subset=latin,cyrillic-ext);
 
 body,html{
 	margin:0;
 	padding:0;
 	background: #0F2124;
 }
-.cf:before,.cf:after {
-   content: "";
-   display: table;
+.wrapper{
+	display: block;;
+	text-align: center;;
+	margin: 50px;
+	opacity:1;
+	transition: opacity .1s;
+	-webkit-transition: opacity .1s;
+	transition-delay:.1s;
+	-webkit-transition-delay:.1s;
+	-o-transition-delay:.1s;
+	-moz-transition-delay:.1s;
+	min-width: 528px;
 }
-
-.cf:after {
-  clear: both;
+.right-col{
+	display: inline-block;
+	vertical-align: top;
 }
-
-.cf {
-   zoom: 1;
+.left-col{
+	display: inline-block;
+	vertical-align: top;
 }
-
+.center-col{
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+.github-btn{
+	margin-right: -9px;
+}
 .side-menu{
 	position: relative;
 	display: inline-block;
@@ -27,7 +54,7 @@ body,html{
 	list-style: none;
 	padding:0;
 	margin:0;
-	margin-left: -5px;
+	margin-right: -7px;
 }
 
 .side-menu li{
@@ -36,10 +63,16 @@ body,html{
 	
 	cursor: pointer;
 	text-align: right;
+	opacity: 1;
+	transition: all .5s;
+	-webkit-transition: all .5s;
+}
+.gap{
+	margin-top:300px!important;
 }
 .btn{
 	
-	font-family: 'Enriqueta', serif;
+	font-family: 'PT Sans Narrow', sans-serif;
 	background: rgba(0,0,0,.4);
 	color :white;
 	font-size: 13px;
@@ -47,36 +80,84 @@ body,html{
 	text-align: right;
 	font-size: 15px; 
 	cursor: pointer;
-}
-.restart-btn{
-	font-family: 'Enriqueta', serif;
-	background: rgba(0,0,0,.9);
-	color :white;
-	font-size: 13px;
-	padding: 5px 14px 5px 10px;
-	cursor: pointer;
-	font-size: 20px; 
-	width:64px;
-	margin: 10px auto;
+	border-radius: 5px;
 }
 .restart{
 	cursor: pointer;
 	text-align: right;
+	font-family: 'icomoon';
+	padding-top:7px;
+	padding-bottom: 7px;
 }
-.gap{
-	margin-top:300px!important;
+.winfield .restart{
+	text-align: center;
+	font-style: normal;
+	line-height: 60px;
+
 }
+.restart:before{
+	content: "\61";
+}
+
 .rules{
 	cursor: pointer;
 }
-.rulesfield{
 
-}
 .game-name{
 	font-size: 26px!important;
-	//padding: 5px 20px!important;
 	cursor: default;
 }
+.color-btn{
+	width:80px;
+	height:80px;
+	border-radius: 40px;
+	display:block;
+	margin: 10px 0;
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
+	transition: all 2s;
+	-webkit-transition: all 2s;
+	
+	opacity: 1;
+}
+.color-panel{
+	margin-left: 30px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 13px;
+	cursor: pointer;
+}
+
+
+@media screen and (max-width: 835px) {
+	.side-menu li{
+		display: inline-block!important;
+	}
+	.gap{
+		margin-top:inherit!important;
+	}
+	.color-btn{
+		display: inline-block;
+		margin-left: 10px;
+		margin-right: 10px;
+
+	}
+	.color-panel{
+		margin:0;
+		margin-top: -20px;
+	}
+	.no-mobile{
+		display: none;
+	}
+	.score{
+		margin-left:10px;
+	}
+}
+@media screen and (min-width: 835px) {
+.mobile{
+		display: none;
+	}
+}
+
 .winfield{
 	position:absolute;
 	top:0;
@@ -86,28 +167,16 @@ body,html{
 	background: rgba(0,0,0,.3);
 	text-align: center;
 	padding-top:45%;
-	font-family: 'Lato', serif;
 	font-weight: 400;
-	font-style: italic;
-	font-size: 40px;
+	font-size: 29px;
 	color:white;
 
 }
-.wrapper{
-	width:780px;
-	margin: 50px auto;
-	opacity:1;
-	transition: opacity .1s;
-}
-.disabled{
-	opacity:0;
-}
-.disabled .side-menu{
-	//position: absolute;
-}
+
 .score{
 	color:white;
-	font-family: 'Enriqueta', serif;
+	font-family: 'PT Sans Narrow', sans-serif;
+
 	font-size: 26px;
 	font-weight: 300;
 	text-align: center;
@@ -119,11 +188,12 @@ body,html{
 	background: red;
 	padding:0;
 	transition: all .1s;
+	-webkit-transition: all .1s;
 }
 
 .tile-12{
-	width:43px;
-	height: 43px;
+	width:44px;
+	height: 44px;
 }
 
 .tile-24{
@@ -163,29 +233,16 @@ body,html{
 	height: 100%;
 }
 
-.color-panel{
-	margin-left: 40px;
-	display: inline-block;
-	vertical-align: top;
-	margin-top: 13px;
-	cursor: pointer;
 
-}
-
-.color-btn{
-	width:80px;
-	height:80px;
-	border-radius: 40px;
-	display:block;
-	margin: 10px 0;
-	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
-}
 
 .mini-color-scheme{
 	position: relative;
 	display:inline-block;
 	margin: 0 10px 10px;
 	cursor: pointer;
+}
+.mini-color-scheme:hover{
+	opacity: .8;
 }
 .mini-color-scheme-tile{
 	width:22px;
@@ -194,6 +251,97 @@ body,html{
 }
 .mini-color-scheme-wrapper{
 
-	margin: 10px 115px;
+	margin: 10px auto;
 	
 }
+
+li{
+
+}
+.cf:before,.cf:after {
+   content: "";
+   display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+   zoom: 1;
+}
+
+.d{
+	opacity:0;
+}
+.d .color-btn{
+	opacity: 0;
+}
+.d li{
+	margin-right: -90px;
+	opacity: 0;
+}
+
+.animation-order-1
+{
+	transition-delay: 0s;
+	-webkit-transition-delay: 0s;
+	-o-transition-delay: 0s;
+	-moz-transition-delay: 0s;
+}
+.animation-order-2
+{
+	transition-delay: .1s;
+	-webkit-transition-delay: .1s;
+	-o-transition-delay: .1s;
+	-moz-transition-delay: .1s;
+}
+.animation-order-3
+{
+	transition-delay: .2s;
+	-webkit-transition-delay: .2s;
+	-o-transition-delay: .2s;
+	-moz-transition-delay: .2s;
+}
+.animation-order-4
+{
+	transition-delay: .3s;
+	-webkit-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-moz-transition-delay: .3s;
+}
+.animation-order-5
+{
+	transition-delay: .4s;
+	-webkit-transition-delay: .4s;
+	-o-transition-delay: .4s;
+	-moz-transition-delay: .4s;
+}
+.animation-order-6
+{
+	transition-delay: .5s;
+	-webkit-transition-delay: .5s;
+	-o-transition-delay: .5s;
+	-moz-transition-delay: .5s;
+}
+
+@-webkit-keyframes rules-an
+{
+0% {background-image: url('rules-1.jpg');}
+50% {background-image: url('rules-2.jpg');}
+100% {background-image: url('rules-3.jpg');}
+}
+
+.game-rules{
+	width:300px;
+	height:300px;
+	top:0;
+	left:0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-animation: rules-an 3s infinite;
+	position: absolute;
+	background-color: rgba(0,0,0,.8);
+}
+
+
