@@ -6,6 +6,7 @@ var	colorScheme1 		=[["#57385C", "#A75265", "#EC7263", "#FEBE7E","#FFEDBC"],
 
 
 window.onload=function(){
+	setTimeout(function () {   window.scrollTo(0, 1); }, 1000);
 	var $wrapper= $('.wrapper')[0];
 	var a=new Game(12,colorScheme1);
 	a.startGame();
