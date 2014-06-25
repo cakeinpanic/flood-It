@@ -8,7 +8,7 @@ function Game(gameSize,colorScheme){
 	this.capturedTiles  = null;
 	this.colorScheme    = colorScheme;
 	this.colorSchemeId  = 0;
-	this.maxSteps 		= 20;
+	this.maxSteps 		= 1;
 	this.winField 		= null;
 	this.restartBtn		= null;
 
