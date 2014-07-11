@@ -12,7 +12,7 @@ function Game(gameSize,colorScheme){
 	this.winField 		= null;
 	this.restartBtn		= null;
 
-	var	gameSize 			= gameSize,
+	var	gameSize 		= gameSize,
 		numColors 			= this.colorScheme[this.colorSchemeId].length;
 		self 				= this,
 		$gameField 			= $('.game-field')[0],
@@ -57,12 +57,15 @@ function Game(gameSize,colorScheme){
 		this.grid.getTile(0,0).capture();
 		this.onColorChanged(this.capturedTiles[0].colorId);
 
+
+		var $wrapper= $('.wrapper')[0];
+		$wrapper.classList.remove("disabled");
 	}
 
 	this.restartGame=function(){
 		if (this.winField) {
-			this.winField.removeChild(this.restartBtn);
-			$gameField.removeChild(this.winField);
+			$(this.restartBtn).hide();
+			$(this.winField).hide();
 		}
 		this.gameOn=true;
 		this.capturedTiles= new Array();
@@ -79,7 +82,6 @@ function Game(gameSize,colorScheme){
 		this.capturedTiles.push(this.grid.getTile(0,0));
 		this.grid.getTile(0,0).capture();
 		this.onColorChanged(this.capturedTiles[0].colorId);
-
 	}
 
 	this.increaseLevel= function(){
@@ -93,15 +95,10 @@ function Game(gameSize,colorScheme){
 		this.drawGameField();
 	}
 	this.toggleRules= function(){
-		
+		$(this.buttons[0]).animate({width:"30px"}, 5000);
 	}
-	$upBtn.onclick = this.increaseLevel.bind(this);
-	$downBtn.onclick = this.decreaseLevel.bind(this);
-	$restart.onclick = this.restartGame.bind(this);
-	$rules.onclick= this.toggleRules.bind(this);
 
 	this.getAllNewTiles = function(tiles, newColor) {
-		console.log(this);
 		var newlyAdded=new Array;
 		for (var i=0; i< tiles.length; i++) {
 		
@@ -119,26 +116,28 @@ function Game(gameSize,colorScheme){
 	}
 
 	this.finishGame= function(win) {
+		
 		this.gameOn=false;
 		if (!this.winField){
 			this.winField=document.createElement("div");
+			this.winFieldText=document.createElement("span");
+			this.winField.appendChild(this.winFieldText);
 			this.winField.classList.add("winfield");
 		}
 		if (!this.restartBtn){
 			this.restartBtn= document.createElement("div");
-			//this.restartBtn.innerHTML="Restart";
-			//this.restartBtn.classList.add("restart-btn");
+			this.winField.appendChild(this.restartBtn);
 			this.restartBtn.classList.add("restart");		
 		}
 		if (win){
-			this.winField.innerHTML="You won in "+this.steps+" steps";
+			this.winFieldText.innerHTML="You won in "+this.steps+" steps";
 		}
 		else
 		{
-			this.winField.innerHTML="You exceeded the number of steps";
+			this.winFieldText.innerHTML="You exceeded the number of steps";
 		}
-		
-		this.winField.appendChild(this.restartBtn);
+		$(this.winField).show();
+		$(this.restartBtn).show();
 		this.restartBtn.onclick=this.restartGame.bind(this);
 
 		$gameField.appendChild(this.winField);
@@ -183,7 +182,6 @@ function Game(gameSize,colorScheme){
 		}
 	}
 	
-	
 	this.startGame= function() {
 		
 		this.drawGameField();
@@ -195,7 +193,6 @@ function Game(gameSize,colorScheme){
 			var newBtn=new Button(btn, i, this);
 			this.buttons.push(newBtn);
 			$colorPanel.appendChild(btn);
-
 		}
 
 		for (i=0; i<this.colorScheme.length; i++) {
@@ -203,8 +200,7 @@ function Game(gameSize,colorScheme){
 			scheme.setAttribute("class","mini-color-scheme");
 			var miniColorScheme=new Scheme(scheme, i, this);
 			$schemePanel.appendChild(scheme);
-		}
-
+		}	
 	}
 
 	function captureTiles (tiles) {
@@ -250,6 +246,12 @@ function Game(gameSize,colorScheme){
 	function getRandomInt (min, max) {
 	    return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
+
+
+	$upBtn.onclick = this.increaseLevel.bind(this);
+	$downBtn.onclick = this.decreaseLevel.bind(this);
+	$restart.onclick = this.restartGame.bind(this);
+	$rules.onclick= this.toggleRules.bind(this);
 
 }
 

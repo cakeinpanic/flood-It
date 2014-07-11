@@ -11,5 +11,5 @@ window.onload=function(){
 	var $wrapper= $('.wrapper')[0];
 	var a=new Game(12,colorScheme1);
 	a.startGame();
-	$wrapper.classList.remove("d")
+	
 }
