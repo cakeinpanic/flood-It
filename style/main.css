@@ -263,7 +263,13 @@ body,html{
 		margin-left:10px;
 	}
 }
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 560px) {
+	.left-col{
+		display: block;
+	}
+	.right-col{
+		display: block;
+	}
 	.winfield{
 		padding-top: 33%;
 	}
@@ -292,39 +298,39 @@ body,html{
 	width:10px;
 	height:9px;
 	display:inline-block;
-}
-.mini-color-scheme-wrapper{
-	margin-top: 5px;
-}
-.mini-color-scheme{
-	margin-right: 6px;
-	margin-left: 6px;
-}
-.btn{
-	font-size:10px;
-}
-.game-name{
-	
-	display: block!important;
-	text-align: center!important;
-	margin-bottom: 2px!important;
-	margin-top: 2px!important;
-}
-.game-name span{
-	font-size: 20px!important;
-}
-.score{
-	font-size: 10px;
-}
+	}
+	.mini-color-scheme-wrapper{
+		margin-top: 5px;
+	}
+	.mini-color-scheme{
+		margin-right: 6px;
+		margin-left: 6px;
+	}
+	.btn{
+		font-size:10px;
+	}
+	.game-name{
+		
+		display: block!important;
+		text-align: center!important;
+		margin-bottom: 2px!important;
+		margin-top: 2px!important;
+	}
+	.game-name span{
+		font-size: 20px!important;
+	}
+	.score{
+		font-size: 10px;
+	}
 
-.wrapper{
-	min-width: 320px;
-	margin: 20px auto;
-}
-.side-menu li{
-	margin-bottom: 0px;
-	margin-top: 9px;
-}
+	.wrapper{
+		min-width: 320px;
+		margin: 20px auto;
+	}
+	.side-menu li{
+		margin-bottom: 0px;
+		margin-top: 9px;
+	}
 
 }
 @media screen and (min-width: 835px) {
