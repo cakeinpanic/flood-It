@@ -95,8 +95,8 @@ function Game(gameSize,colorScheme){
 		this.drawGameField();
 	}
 	this.toggleRules= function(){
-		console.log($(this.buttons[0]));
-		$(this.buttons[0]).animate({width:"30$"}, 5000);
+		this.buttons[0].animateClick();
+		
 	}
 
 	this.getAllNewTiles = function(tiles, newColor) {
