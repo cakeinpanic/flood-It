@@ -23,7 +23,7 @@ function Game(gameSize,colorScheme){
 		$downBtn			= $('.down')[0],
 		$restart			= $('.restart')[0],
 		$schemePanel 		= $('.mini-color-scheme-wrapper')[0];
-
+		testColorsArray		= [1,3,0,4,2,2,4,1,4,4,3,3,1,1,4,0,2,4,4,2,2,0,4,3,1,1,4,1,2,4,0,0,3,4,2,1,2,4,1,3,3,2,0,2,2,4,2,2,3,1,1,1,4,0,1,3,1,4,3,3,3,4,1,2,0,1,3,1,2,2,0,0,1,2,3,0,0,1,2,2,3,3,4,4,3,4,4,4,1,2,2,3,4,1,3,3,2,0,4,0,4,2,4,2,0,2,3,2,4,3,4,2,1,4,4,0,4,1,1,1,1,0,2,2,0,4,2,3,1,3,1,1,0,3,0,2,1,0,2,2,2,1,3,4];
 
 	this.drawGameField=function(){
 
@@ -32,6 +32,7 @@ function Game(gameSize,colorScheme){
 		this.capturedTiles= new Array();
 		this.steps=-1;
 		this.currentColor=null;
+		var testArray=new Array();
 
 		for (var i=0; i<gameSize; i++) {
 			var row= document.createElement("ul");
@@ -48,21 +49,20 @@ function Game(gameSize,colorScheme){
 					else
 						tileObj.classList.add("tile-12");
 					row.appendChild(tileObj);
-					var newTile= new Tile(tileObj, [j, i], getRandomInt(0,numColors-1), this);
+					var color=getRandomInt(0,numColors-1);
+					var newTile= new Tile(tileObj, [j, i], color, this);
 					this.grid.addTileToRow(i,newTile);
 				}
 		}
-
 		this.capturedTiles.push(this.grid.getTile(0,0));
 		this.grid.getTile(0,0).capture();
 		this.onColorChanged(this.capturedTiles[0].colorId);
-
 
 		var $wrapper= $('.wrapper')[0];
 		$wrapper.classList.remove("disabled");
 	}
 
-	this.restartGame=function(){
+	this.restartGame=function(test){
 		if (this.winField) {
 			$(this.restartBtn).hide();
 			$(this.winField).hide();
@@ -74,7 +74,13 @@ function Game(gameSize,colorScheme){
 		for (var i=0; i<gameSize; i++) {
 			for (var j=0; j<gameSize; j++)
 				{
-					this.grid.getTile(i,j).setColor(getRandomInt(0,numColors-1));
+					if (test==true) {
+						this.grid.getTile(i,j).setColor(testColorsArray[i*gameSize+j]);
+					}
+					else {
+						console.log(getRandomInt(0,numColors-1));
+						this.grid.getTile(i,j).setColor(getRandomInt(0,numColors-1));
+					}
 					this.grid.getTile(i,j).unCapture();
 				}
 		}
@@ -90,13 +96,29 @@ function Game(gameSize,colorScheme){
 	}
 
 	this.decreaseLevel= function(){
-		console.log(this.$gameField);
 		gameSize=12;
 		this.drawGameField();
 	}
 	this.toggleRules= function(){
-		this.buttons[0].animateClick();
-		
+		this.decreaseLevel();
+		this.restartGame(true);
+		setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 500);
+		setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 1000);
+		setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 1500);
+		setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 2000);
+		setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 2500);
+		setTimeout(function() {this.buttons[0].ClickEvent();}.bind(this), 3000);
+		setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 3500);
+		setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 4000);
+		setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 4500);
+		setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 5000);
+		setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 5500);
+		setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 6000);
+		setTimeout(function() {this.buttons[0].ClickEvent();}.bind(this), 6500);
+		setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 7000);
+		setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 7500);
+		setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 8000);
+		setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 8500);
 	}
 
 	this.getAllNewTiles = function(tiles, newColor) {
