@@ -59,6 +59,11 @@ function Game(gameSize,colorScheme){
 					this.grid.addTileToRow(i,newTile);
 				}
 		}
+
+		for (var t=0; t<$score.length; t++){
+			$score[t].innerHTML=this.steps+"/"+this.maxSteps;
+		}
+
 		this.capturedTiles.push(this.grid.getTile(0,0));
 		this.grid.getTile(0,0).capture();
 		this.onColorChanged(this.capturedTiles[0].colorId);
@@ -98,13 +103,15 @@ function Game(gameSize,colorScheme){
 
 	this.increaseLevel= function(){
 		this.stopTest();
-		gameSize=24;
+		gameSize = 24;
+		this.maxSteps = 100;
 		this.drawGameField();
 	}
 
 	this.decreaseLevel= function(){
 		this.stopTest();
-		gameSize=12;
+		gameSize = 12;
+		this.maxSteps = 20;
 		this.drawGameField();
 	}
 	this.toggleRules= function(){
