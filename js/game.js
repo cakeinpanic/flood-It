@@ -11,6 +11,7 @@ function Game(gameSize,colorScheme){
 	this.maxSteps 		= 20;
 	this.winField 		= null;
 	this.restartBtn		= null;
+	this.demoIsRunning	= false;
 
 	var	gameSize 		= gameSize,
 		numColors 			= this.colorScheme[this.colorSchemeId].length;
@@ -23,7 +24,11 @@ function Game(gameSize,colorScheme){
 		$downBtn			= $('.down')[0],
 		$restart			= $('.restart')[0],
 		$schemePanel 		= $('.mini-color-scheme-wrapper')[0];
-		testColorsArray		= [1,3,0,4,2,2,4,1,4,4,3,3,1,1,4,0,2,4,4,2,2,0,4,3,1,1,4,1,2,4,0,0,3,4,2,1,2,4,1,3,3,2,0,2,2,4,2,2,3,1,1,1,4,0,1,3,1,4,3,3,3,4,1,2,0,1,3,1,2,2,0,0,1,2,3,0,0,1,2,2,3,3,4,4,3,4,4,4,1,2,2,3,4,1,3,3,2,0,4,0,4,2,4,2,0,2,3,2,4,3,4,2,1,4,4,0,4,1,1,1,1,0,2,2,0,4,2,3,1,3,1,1,0,3,0,2,1,0,2,2,2,1,3,4];
+		demoColorsArray		= [1,3,0,4,2,2,4,1,4,4,3,3,1,1,4,0,2,4,4,2,2,0,4,3,1,1,4,1,2,4,0,0,3,4,2,1,2,4,1,3,3,2,0,2,2,4,2,2,3,1,1,1,4,0,1,3,1,4,3,3,3,4,1,2,0,1,3,1,2,2,0,0,1,2,3,0,0,1,2,2,3,3,4,4,3,4,4,4,1,2,2,3,4,1,3,3,2,0,4,0,4,2,4,2,0,2,3,2,4,3,4,2,1,4,4,0,4,1,1,1,1,0,2,2,0,4,2,3,1,3,1,1,0,3,0,2,1,0,2,2,2,1,3,4],
+		demoStepTimeout		= null,
+		demoButtonTimeout	= null,
+		demoTileTimeout		= null;
+
 
 	this.drawGameField=function(){
 
@@ -32,7 +37,7 @@ function Game(gameSize,colorScheme){
 		this.capturedTiles= new Array();
 		this.steps=-1;
 		this.currentColor=null;
-		var testArray=new Array();
+		var demoArray=new Array();
 
 		for (var i=0; i<gameSize; i++) {
 			var row= document.createElement("ul");
@@ -62,7 +67,9 @@ function Game(gameSize,colorScheme){
 		$wrapper.classList.remove("disabled");
 	}
 
-	this.restartGame=function(test){
+	this.restartGame=function(demo){
+		this.stopTest();
+
 		if (this.winField) {
 			$(this.restartBtn).hide();
 			$(this.winField).hide();
@@ -74,11 +81,10 @@ function Game(gameSize,colorScheme){
 		for (var i=0; i<gameSize; i++) {
 			for (var j=0; j<gameSize; j++)
 				{
-					if (test==true) {
-						this.grid.getTile(i,j).setColor(testColorsArray[i*gameSize+j]);
+					if (demo==true) {
+						this.grid.getTile(i,j).setColor(demoColorsArray[i*gameSize+j]);
 					}
 					else {
-						console.log(getRandomInt(0,numColors-1));
 						this.grid.getTile(i,j).setColor(getRandomInt(0,numColors-1));
 					}
 					this.grid.getTile(i,j).unCapture();
@@ -91,34 +97,91 @@ function Game(gameSize,colorScheme){
 	}
 
 	this.increaseLevel= function(){
+		this.stopTest();
 		gameSize=24;
 		this.drawGameField();
 	}
 
 	this.decreaseLevel= function(){
+		this.stopTest();
 		gameSize=12;
 		this.drawGameField();
 	}
 	this.toggleRules= function(){
+		
 		this.decreaseLevel();
-		this.restartGame(true);
-		setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 500);
-		setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 1000);
-		setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 1500);
-		setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 2000);
-		setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 2500);
-		setTimeout(function() {this.buttons[0].ClickEvent();}.bind(this), 3000);
-		setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 3500);
-		setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 4000);
-		setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 4500);
-		setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 5000);
-		setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 5500);
-		setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 6000);
-		setTimeout(function() {this.buttons[0].ClickEvent();}.bind(this), 6500);
-		setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 7000);
-		setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 7500);
-		setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 8000);
-		setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 8500);
+		this.demoIsRunning = true;
+		this.restartGame(this.demoIsRunning);
+
+		var demoSteps= [4,1,2,3,4,0,1,2,4,3,2,1,0,3,4,1,2];
+		var currentStepIndex=0;
+
+		var makeStep = function(animateClickDelay, animateTileDelay){
+			colorIndex=demoSteps[currentStepIndex];
+			console.log(animateClickDelay,animateTileDelay);
+			demoButtonTimeout = setTimeout(function() {this.buttons[colorIndex].animateClick();}.bind(this), animateClickDelay);
+			demoTileTimeout   = setTimeout(function() {this.buttons[colorIndex].ClickEvent();}.bind(this), animateTileDelay);
+			currentStepIndex++;
+			if (currentStepIndex<demoSteps.length) {
+				var newDelay=1500;
+				if (currentStepIndex>5) newDelay=1000;
+				if (currentStepIndex>8) newDelay=500;
+				demoStepTimeout=setTimeout(function() { makeStep(0,newDelay); }, newDelay+500)
+			}
+		}.bind(this);
+
+		makeStep(500,2000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[4].animateClick();}.bind(this), 500);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 2000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[1].animateClick();}.bind(this), 2000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 3500);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[2].animateClick();}.bind(this), 3500);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 5000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[3].animateClick();}.bind(this), 5000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 6500);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[4].animateClick();}.bind(this), 6500);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 8000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[0].animateClick();}.bind(this), 8000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[0].ClickEvent();}.bind(this), 9000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[1].animateClick();}.bind(this), 9000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 10000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[2].animateClick();}.bind(this), 10000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 11000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[4].animateClick();}.bind(this), 11000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 11500);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[3].animateClick();}.bind(this), 11500);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 12000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[2].animateClick();}.bind(this), 12000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 12500);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[1].animateClick();}.bind(this), 12500);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 13000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[0].animateClick();}.bind(this), 13000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[0].ClickEvent();}.bind(this), 13500);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[3].animateClick();}.bind(this), 13500);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 14000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[4].animateClick();}.bind(this), 14000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 14500);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[1].animateClick();}.bind(this), 14500);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 15000);
+
+		// demoButtonTimeout = setTimeout(function() {this.buttons[2].animateClick();}.bind(this), 15000);
+		// demoTileTimeout   = setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 15500);
 	}
 
 	this.getAllNewTiles = function(tiles, newColor) {
@@ -136,7 +199,7 @@ function Game(gameSize,colorScheme){
 
 		}
 		return newlyAdded;
-	}
+	}	
 
 	this.finishGame= function(win) {
 		
@@ -165,7 +228,12 @@ function Game(gameSize,colorScheme){
 
 		$gameField.appendChild(this.winField);
 	}
-
+	this.stopTest= function(){
+		this.demoIsRunning=false;
+		clearTimeout(demoTileTimeout);
+		clearTimeout(demoButtonTimeout);
+		clearTimeout(demoStepTimeout);
+	}
 	this.changeColorScheme= function(newColorSchemeId) {
 		this.colorSchemeId=newColorSchemeId;
 		numColors=this.colorScheme[this.colorSchemeId].length;
@@ -176,7 +244,7 @@ function Game(gameSize,colorScheme){
 	}
 	this.onColorChanged= function(newColor) {
 		
-		if (this.gameOn && newColor!=this.currentColor) {
+		if (!this.demoIsRunning && this.gameOn && newColor!=this.currentColor) {
 
 			this.currentColor=newColor;
 			this.steps++;
@@ -269,7 +337,6 @@ function Game(gameSize,colorScheme){
 	function getRandomInt (min, max) {
 	    return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
-
 
 	$upBtn.onclick = this.increaseLevel.bind(this);
 	$downBtn.onclick = this.decreaseLevel.bind(this);
