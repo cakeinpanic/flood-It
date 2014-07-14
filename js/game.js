@@ -118,7 +118,6 @@ function Game(gameSize,colorScheme){
 
 		var makeStep = function(animateClickDelay, animateTileDelay){
 			colorIndex=demoSteps[currentStepIndex];
-			console.log(animateClickDelay,animateTileDelay);
 			demoButtonTimeout = setTimeout(function() {this.buttons[colorIndex].animateClick();}.bind(this), animateClickDelay);
 			demoTileTimeout   = setTimeout(function() {this.buttons[colorIndex].ClickEvent();}.bind(this), animateTileDelay);
 			currentStepIndex++;
@@ -275,12 +274,10 @@ function Game(gameSize,colorScheme){
 		var sameColorTiles=new Array();
 
 		for ( var j=0; j<tiles.length; j++) {
-			//console.log(newColor, tiles[j].colorId);
 			if (tiles[j].colorId==newColor)
 				sameColorTiles.push(tiles[j]);
 
 		}
-		//console.log("newcolor tiles", sameColorTiles);
 		return sameColorTiles;
 	}
 	function getRandomInt (min, max) {
