@@ -131,57 +131,6 @@ function Game(gameSize,colorScheme){
 		}.bind(this);
 
 		makeStep(500,2000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[4].animateClick();}.bind(this), 500);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 2000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[1].animateClick();}.bind(this), 2000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 3500);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[2].animateClick();}.bind(this), 3500);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 5000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[3].animateClick();}.bind(this), 5000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 6500);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[4].animateClick();}.bind(this), 6500);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 8000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[0].animateClick();}.bind(this), 8000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[0].ClickEvent();}.bind(this), 9000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[1].animateClick();}.bind(this), 9000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 10000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[2].animateClick();}.bind(this), 10000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 11000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[4].animateClick();}.bind(this), 11000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 11500);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[3].animateClick();}.bind(this), 11500);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 12000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[2].animateClick();}.bind(this), 12000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 12500);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[1].animateClick();}.bind(this), 12500);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 13000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[0].animateClick();}.bind(this), 13000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[0].ClickEvent();}.bind(this), 13500);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[3].animateClick();}.bind(this), 13500);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[3].ClickEvent();}.bind(this), 14000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[4].animateClick();}.bind(this), 14000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[4].ClickEvent();}.bind(this), 14500);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[1].animateClick();}.bind(this), 14500);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[1].ClickEvent();}.bind(this), 15000);
-
-		// demoButtonTimeout = setTimeout(function() {this.buttons[2].animateClick();}.bind(this), 15000);
-		// demoTileTimeout   = setTimeout(function() {this.buttons[2].ClickEvent();}.bind(this), 15500);
 	}
 
 	this.getAllNewTiles = function(tiles, newColor) {
