@@ -1,0 +1,85 @@
+
+.cf:before,.cf:after {
+   content: "";
+   display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+   zoom: 1;
+}
+
+
+.disabled{
+	opacity:0;
+}
+.disabled .color-btn{
+	opacity: 0;
+}
+.disabled .left-col li{
+	opacity: 0;
+	margin-right: -90px;
+	
+}
+.disabled .tile{
+	opacity: 0;
+}
+.disabled .score{
+	opacity: 0;
+}
+.disabled .mini-color-scheme{
+	opacity: 0;
+}
+
+.animation-order-1
+{
+	transition-delay: 0s;
+	-webkit-transition-delay: 0s;
+	-o-transition-delay: 0s;
+	-moz-transition-delay: 0s;
+}
+.animation-order-2
+{
+	transition-delay: .1s;
+	-webkit-transition-delay: .1s;
+	-o-transition-delay: .1s;
+	-moz-transition-delay: .1s;
+}
+.animation-order-3
+{
+	transition-delay: .2s;
+	-webkit-transition-delay: .2s;
+	-o-transition-delay: .2s;
+	-moz-transition-delay: .2s;
+}
+.animation-order-4
+{
+	transition-delay: .3s;
+	-webkit-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-moz-transition-delay: .3s;
+}
+.animation-order-5
+{
+	transition-delay: .4s;
+	-webkit-transition-delay: .4s;
+	-o-transition-delay: .4s;
+	-moz-transition-delay: .4s;
+}
+.animation-order-6
+{
+	transition-delay: .5s;
+	-webkit-transition-delay: .5s;
+	-o-transition-delay: .5s;
+	-moz-transition-delay: .5s;
+}
+
+@-webkit-keyframes rules-an
+{
+0% {background-image: url('rules-1.jpg');}
+50% {background-image: url('rules-2.jpg');}
+100% {background-image: url('rules-3.jpg');}
+}

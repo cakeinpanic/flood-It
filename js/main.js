@@ -1,15 +1,13 @@
-setTimeout(function () {   window.scrollTo(0, 1); }, 1000);
+setTimeout(function () {  window.scrollTo(0, 1); }, 1000);
 
-var	colorScheme1 		=[["#57385C", "#A75265", "#EC7263", "#FEBE7E","#FFEDBC"],
-						  ["#004358", "#1F8A70", "#BEDB39", "#FF5347", "#FD7400"],
+var	colorScheme 		=[["#57385C", "#A75265", "#EC7263", "#FEBE7E","#FFEDBC"],
 						  ["#F72F41", "#399DF6", "#99C946", "#FBDB52", "#635358"],
-						  ["#4F7288", "#85CFD0", "#EDE872", "#F39A70", "#D0408D"]
+						  ["#FF8787", "#FFBD8C", "#FFE2CC", "#938787", "#72D4FF"],
+						  ["#435A66", "#88A6AF", "#F5F2EB", "#D9CDB8", "#413541"]
 						 ];
 
 
 window.onload=function(){
-	var $wrapper= $('.wrapper')[0];
-	var a=new Game(12,colorScheme1);
-	a.startGame();
-	$wrapper.classList.remove("d")
+	var a=new Game(colorScheme);
+	a.startGame();	
 }

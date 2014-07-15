@@ -63,9 +63,7 @@ body,html{
 	
 	cursor: pointer;
 	text-align: right;
-	opacity: 1;
-	transition: all .5s;
-	-webkit-transition: all .5s;
+	transition-duration: .7s;
 }
 .gap{
 	margin-top:300px!important;
@@ -80,6 +78,7 @@ body,html{
 	font-size: 15px; 
 	cursor: pointer;
 	border-radius: 5px;
+
 }
 .restart{
 	cursor: pointer;
@@ -100,6 +99,12 @@ body,html{
 
 .rules{
 	cursor: pointer;
+	text-align: center;
+	display: inline-block;
+}
+.demo-play{
+	opacity: .9;
+	font-size: 13px;
 }
 
 .game-name span{
@@ -114,10 +119,8 @@ body,html{
 	display:block;
 	margin: 10px 0;
 	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
-	transition: all 2s;
-	-webkit-transition: all 2s;
-	
 	opacity: 1;
+	transition: all .1s ease-out;
 }
 .color-panel{
 	margin-left: 30px;
@@ -170,8 +173,10 @@ body,html{
 	float:left;
 	background: red;
 	padding:0;
-	transition: all .1s;
-	-webkit-transition: all .1s;
+	transition-duration: .3s;
+	-webkit-transition-duration: .3s;
+	-o-transition-duration: .3s;
+	-moz-transition-duration: .3s;
 }
 
 
@@ -226,80 +231,6 @@ body,html{
 	
 }
 
-.cf:before,.cf:after {
-   content: "";
-   display: table;
-}
-
-.cf:after {
-  clear: both;
-}
-
-.cf {
-   zoom: 1;
-}
-
-.d{
-	opacity:0;
-}
-.d .color-btn{
-	opacity: 0;
-}
-.d li{
-	margin-right: -90px;
-	opacity: 0;
-}
-
-.animation-order-1
-{
-	transition-delay: 0s;
-	-webkit-transition-delay: 0s;
-	-o-transition-delay: 0s;
-	-moz-transition-delay: 0s;
-}
-.animation-order-2
-{
-	transition-delay: .1s;
-	-webkit-transition-delay: .1s;
-	-o-transition-delay: .1s;
-	-moz-transition-delay: .1s;
-}
-.animation-order-3
-{
-	transition-delay: .2s;
-	-webkit-transition-delay: .2s;
-	-o-transition-delay: .2s;
-	-moz-transition-delay: .2s;
-}
-.animation-order-4
-{
-	transition-delay: .3s;
-	-webkit-transition-delay: .3s;
-	-o-transition-delay: .3s;
-	-moz-transition-delay: .3s;
-}
-.animation-order-5
-{
-	transition-delay: .4s;
-	-webkit-transition-delay: .4s;
-	-o-transition-delay: .4s;
-	-moz-transition-delay: .4s;
-}
-.animation-order-6
-{
-	transition-delay: .5s;
-	-webkit-transition-delay: .5s;
-	-o-transition-delay: .5s;
-	-moz-transition-delay: .5s;
-}
-
-@-webkit-keyframes rules-an
-{
-0% {background-image: url('rules-1.jpg');}
-50% {background-image: url('rules-2.jpg');}
-100% {background-image: url('rules-3.jpg');}
-}
-
 .game-rules{
 	width:300px;
 	height:300px;
@@ -340,7 +271,14 @@ body,html{
 		margin-left:10px;
 	}
 }
-@media screen and (max-width: 520px) {
+
+@media screen and (max-width: 560px) {
+	.left-col{
+		display: block;
+	}
+	.right-col{
+		display: block;
+	}
 	.winfield{
 		padding-top: 33%;
 	}
@@ -364,44 +302,45 @@ body,html{
 		width:40px;
 		height: 40px;
 
+
 	}
 	.mini-color-scheme-tile{
 	width:10px;
 	height:9px;
 	display:inline-block;
-}
-.mini-color-scheme-wrapper{
-	margin-top: 5px;
-}
-.mini-color-scheme{
-	margin-right: 6px;
-	margin-left: 6px;
-}
-.btn{
-	font-size:10px;
-}
-.game-name{
-	
-	display: block!important;
-	text-align: center!important;
-	margin-bottom: 2px!important;
-	margin-top: 2px!important;
-}
-.game-name span{
-	font-size: 20px!important;
-}
-.score{
-	font-size: 10px;
-}
+	}
+	.mini-color-scheme-wrapper{
+		margin-top: 5px;
+	}
+	.mini-color-scheme{
+		margin-right: 6px;
+		margin-left: 6px;
+	}
+	.btn{
+		font-size:10px;
+	}
+	.game-name{
+		
+		display: block!important;
+		text-align: center!important;
+		margin-bottom: 2px!important;
+		margin-top: 2px!important;
+	}
+	.game-name span{
+		font-size: 20px!important;
+	}
+	.score{
+		font-size: 10px;
+	}
 
-.wrapper{
-	min-width: 320px;
-	margin: 20px auto;
-}
-.side-menu li{
-	margin-bottom: 0px;
-	margin-top: 9px;
-}
+	.wrapper{
+		min-width: 320px;
+		margin: 20px auto;
+	}
+	.side-menu li{
+		margin-bottom: 0px;
+		margin-top: 9px;
+	}
 
 }
 @media screen and (min-width: 835px) {
