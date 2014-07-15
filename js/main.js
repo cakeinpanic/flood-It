@@ -1,6 +1,6 @@
-setTimeout(function () {   window.scrollTo(0, 1); }, 1000);
+setTimeout(function () {  window.scrollTo(0, 1); }, 1000);
 
-var	colorScheme1 		=[["#57385C", "#A75265", "#EC7263", "#FEBE7E","#FFEDBC"],
+var	colorScheme 		=[["#57385C", "#A75265", "#EC7263", "#FEBE7E","#FFEDBC"],
 						  ["#F72F41", "#399DF6", "#99C946", "#FBDB52", "#635358"],
 						  ["#FF8787", "#FFBD8C", "#FFE2CC", "#938787", "#72D4FF"],
 						  ["#435A66", "#88A6AF", "#F5F2EB", "#D9CDB8", "#413541"]
@@ -8,7 +8,6 @@ var	colorScheme1 		=[["#57385C", "#A75265", "#EC7263", "#FEBE7E","#FFEDBC"],
 
 
 window.onload=function(){
-	var a=new Game(12,colorScheme1);
-	a.startGame();
-	
+	var a=new Game(colorScheme);
+	a.startGame();	
 }

@@ -1,8 +1,8 @@
-function Game(gameSize,colorScheme){
+function Game(colorScheme){
 
 	this.grid 			= null;
 	this.buttons		= new Array();
-	this.gameOn			= true;
+	this.isGameOn			= true;
 	this.steps			= -1;
 	this.currentColor  	= null;
 	this.capturedTiles  = null;
@@ -13,7 +13,7 @@ function Game(gameSize,colorScheme){
 	this.restartBtn		= null;
 	this.demoIsRunning	= false;
 
-	var	gameSize 		= gameSize,
+	var	gameSize 			= 12,
 		numColors 			= this.colorScheme[this.colorSchemeId].length;
 		self 				= this,
 		$gameField 			= $('.game-field')[0],
@@ -23,7 +23,7 @@ function Game(gameSize,colorScheme){
 		$upBtn				= $('.up')[0],
 		$downBtn			= $('.down')[0],
 		$restart			= $('.restart')[0],
-		$schemePanel 		= $('.mini-color-scheme-wrapper')[0];
+		$schemePanel 		= $('.mini-color-scheme-wrapper')[0],
 		demoColorsArray		= [1,3,0,4,2,2,4,1,4,4,3,3,1,1,4,0,2,4,4,2,2,0,4,3,1,1,4,1,2,4,0,0,3,4,2,1,2,4,1,3,3,2,0,2,2,4,2,2,3,1,1,1,4,0,1,3,1,4,3,3,3,4,1,2,0,1,3,1,2,2,0,0,1,2,3,0,0,1,2,2,3,3,4,4,3,4,4,4,1,2,2,3,4,1,3,3,2,0,4,0,4,2,4,2,0,2,3,2,4,3,4,2,1,4,4,0,4,1,1,1,1,0,2,2,0,4,2,3,1,3,1,1,0,3,0,2,1,0,2,2,2,1,3,4],
 		demoStepTimeout		= null,
 		demoButtonTimeout	= null,
@@ -79,7 +79,7 @@ function Game(gameSize,colorScheme){
 			$(this.restartBtn).hide();
 			$(this.winField).hide();
 		}
-		this.gameOn=true;
+		this.isGameOn=true;
 		this.capturedTiles= new Array();
 		this.steps=-1;
 		this.currentColor=null;
@@ -158,7 +158,7 @@ function Game(gameSize,colorScheme){
 
 	this.finishGame= function(win) {
 		
-		this.gameOn=false;
+		this.isGameOn=false;
 		if (!this.winField){
 			this.winField=document.createElement("div");
 			this.winFieldText=document.createElement("span");
@@ -199,7 +199,7 @@ function Game(gameSize,colorScheme){
 	}
 	this.onColorChanged= function(newColor) {
 		
-		if (!this.demoIsRunning && this.gameOn && newColor!=this.currentColor) {
+		if (!this.demoIsRunning && this.isGameOn && newColor!=this.currentColor) {
 
 			this.currentColor=newColor;
 			this.steps++;
