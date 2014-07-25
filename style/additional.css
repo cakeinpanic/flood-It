@@ -77,9 +77,3 @@
 	-moz-transition-delay: .5s;
 }
 
-@-webkit-keyframes rules-an
-{
-0% {background-image: url('rules-1.jpg');}
-50% {background-image: url('rules-2.jpg');}
-100% {background-image: url('rules-3.jpg');}
-}

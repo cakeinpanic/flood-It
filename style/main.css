@@ -64,6 +64,8 @@ body,html{
 	cursor: pointer;
 	text-align: right;
 	transition-duration: .7s;
+	-webkit-transition-duration: .7s;
+	        
 }
 .gap{
 	margin-top:300px!important;
@@ -97,7 +99,7 @@ body,html{
 	content: "\61";
 }
 
-.rules{
+.how-to{
 	cursor: pointer;
 	text-align: center;
 	display: inline-block;
@@ -120,7 +122,8 @@ body,html{
 	margin: 10px 0;
 	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.5);
 	opacity: 1;
-	transition: all .1s ease-out;
+	-webkit-transition: all .1s ease-out;
+	        transition: all .1s ease-out;
 }
 .color-panel{
 	margin-left: 30px;
@@ -140,9 +143,6 @@ body,html{
 	height: 22px;
 
 }
-
-
-
 
 .winfield{
 	position:absolute;
@@ -187,7 +187,7 @@ body,html{
 	margin:0;
 	padding:0;
 }
-.rulesfield{
+.how-tofield{
 	top:50px;
 	left:200px;
 	width:550px;
@@ -226,30 +226,21 @@ body,html{
 	display:inline-block;
 }
 .mini-color-scheme-wrapper{
-
 	margin: 10px auto;
-	
+	max-width: 
 }
 
-.game-rules{
-	width:300px;
-	height:300px;
-	top:0;
-	left:0;
-	background-repeat: no-repeat;
-	background-position: center center;
-	-webkit-animation: rules-an 3s infinite;
-	position: absolute;
-	background-color: rgba(0,0,0,.8);
-}
 
 @media screen and (max-width: 835px) {
 
 	.side-menu{
 		margin-right: 0;
+		margin-bottom: 8px;
 	}
 	.side-menu li{
 		display: inline-block;
+		vertical-align: middle;
+		margin: 0 4px;
 	}
 	.gap{
 		margin-top:inherit!important;
@@ -269,6 +260,15 @@ body,html{
 	}
 	.score{
 		margin-left:10px;
+		margin-bottom: 0px;
+	}
+	.restart{
+		line-height: 23px;
+		padding-top: 6px;
+		padding-bottom: 7px;
+	}
+	.game-name{
+		margin-right: 95px!important;
 	}
 }
 @media screen and (max-width: 560px) {
@@ -318,18 +318,26 @@ body,html{
 	.btn{
 		font-size:10px;
 	}
+	.how-to .demo-play{
+		font-size: 10px;
+	}
+	.restart{
+		line-height: 19px;
+	}
 	.game-name{
 		
 		display: block!important;
 		text-align: center!important;
 		margin-bottom: 2px!important;
 		margin-top: 2px!important;
+		margin-right: 0px!important;
 	}
 	.game-name span{
 		font-size: 20px!important;
 	}
-	.score{
-		font-size: 10px;
+	.score {
+		font-size: 14px;
+		margin-left: 3px;
 	}
 
 	.wrapper{
@@ -338,7 +346,7 @@ body,html{
 	}
 	.side-menu li{
 		margin-bottom: 0px;
-		margin-top: 9px;
+		
 	}
 
 }
