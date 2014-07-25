@@ -11,42 +11,45 @@
 
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow&subset=latin,cyrillic-ext);
 
-body,html{
+body,html {
 	margin:0;
 	padding:0;
 	background: #0F2124;
 	font-family: 'PT Sans Narrow', sans-serif;
 }
-.wrapper{
+.wrapper {
 	display: block;;
 	text-align: center;;
 	margin: 50px auto;
 	opacity:1;
 	transition: opacity .1s;
 	-webkit-transition: opacity .1s;
+	-o-transition: opacity .1s;
+	-moz-transition: opacity .1s;
+
 	transition-delay:.1s;
 	-webkit-transition-delay:.1s;
 	-o-transition-delay:.1s;
 	-moz-transition-delay:.1s;
 	min-width: 528px;
 }
-.right-col{
+.right-col {
 	display: inline-block;
 	vertical-align: top;
 }
-.left-col{
+.left-col {
 	display: inline-block;
 	vertical-align: top;
 }
-.center-col{
+.center-col {
 	display: inline-block;
 	vertical-align: top;
 	position: relative;
 }
-.github-btn{
+.github-btn {
 	margin-right: -9px;
 }
-.side-menu{
+.side-menu {
 	position: relative;
 	display: inline-block;
 	vertical-align: top;
@@ -57,7 +60,7 @@ body,html{
 	margin-right: -7px;
 }
 
-.side-menu li{
+.menu-item {
 	display: block;
 	margin: 15px 0;
 	
@@ -67,11 +70,10 @@ body,html{
 	-webkit-transition-duration: .7s;
 	        
 }
-.gap{
-	margin-top:300px!important;
+.gap {
+	margin-top:300px;
 }
-.btn{
-	
+.btn {
 	font-family: 'PT Sans Narrow', sans-serif;
 	background: rgba(0,0,0,.4);
 	color :white;
@@ -80,41 +82,39 @@ body,html{
 	font-size: 15px; 
 	cursor: pointer;
 	border-radius: 5px;
-
 }
-.restart{
+.restart {
 	cursor: pointer;
 	text-align: right;
 	font-family: 'icomoon';
 	padding-top:7px;
 	padding-bottom: 7px;
 }
-.winfield .restart{
+.winfield .restart {
 	text-align: center;
 	font-style: normal;
 	line-height: 60px;
 
 }
-.restart:before{
+.restart:before {
 	content: "\61";
 }
 
-.how-to{
+.how-to {
 	cursor: pointer;
 	text-align: center;
 	display: inline-block;
 }
-.demo-play{
+.demo-play {
 	opacity: .9;
 	font-size: 13px;
 }
 
-.game-name span{
-
-	font-size: 26px!important;
+.game-name span {
+	font-size: 26px;
 	cursor: default;
 }
-.color-btn{
+.color-btn {
 	width:80px;
 	height:80px;
 	border-radius: 40px;
@@ -125,7 +125,7 @@ body,html{
 	-webkit-transition: all .1s ease-out;
 	        transition: all .1s ease-out;
 }
-.color-panel{
+.color-panel {
 	margin-left: 30px;
 	display: inline-block;
 	vertical-align: top;
@@ -133,18 +133,18 @@ body,html{
 	cursor: pointer;
 }
 
-.tile-12{
+.tile-12 {
 	width:44px;
 	height: 44px;
 }
 
-.tile-24{
+.tile-24 {
 	width:22px;
 	height: 22px;
 
 }
 
-.winfield{
+.winfield {
 	position:absolute;
 	top:0;
 	bottom:0;
@@ -159,7 +159,7 @@ body,html{
 
 }
 
-.score{
+.score {
 	color:white;
 	font-family: 'PT Sans Narrow', sans-serif;
 
@@ -168,7 +168,7 @@ body,html{
 	text-align: center;
 	margin-bottom:15px;
 }
-.tile{
+.tile {
 	display:block;
 	float:left;
 	background: red;
@@ -179,15 +179,14 @@ body,html{
 	-moz-transition-duration: .3s;
 }
 
-
 .grid-row
-{
+ {
 	display: block;
 	position: relative;
 	margin:0;
 	padding:0;
 }
-.how-tofield{
+.how-tofield {
 	top:50px;
 	left:200px;
 	width:550px;
@@ -197,162 +196,154 @@ body,html{
 	display: inline-block;
 }
 
-.game-field{
+.game-field {
 	margin: 0px auto;
 	position:relative;
 	display: inline-block;
 
 }
-.game-field-wrapper{
+.game-field-wrapper {
 	position: relative;
 	width:100%;
 	height: 100%;
 }
 
-
-
-.mini-color-scheme{
+.mini-color-scheme {
 	position: relative;
 	display:inline-block;
 	margin: 0 10px 10px;
 	cursor: pointer;
 }
-.mini-color-scheme:hover{
+.mini-color-scheme:hover {
 	opacity: .8;
 }
-.mini-color-scheme-tile{
+.mini-color-scheme-tile {
 	width:22px;
 	height:13px;
 	display:inline-block;
 }
-.mini-color-scheme-wrapper{
+.mini-color-scheme-wrapper {
 	margin: 10px auto;
 	max-width: 
 }
 
-
-@media screen and (max-width: 835px) {
-
-	.side-menu{
+@media screen and (max-width: 835px)  {
+	.side-menu {
 		margin-right: 0;
 		margin-bottom: 8px;
 	}
-	.side-menu li{
+	.menu-item {
 		display: inline-block;
 		vertical-align: middle;
 		margin: 0 4px;
 	}
-	.gap{
-		margin-top:inherit!important;
+	.gap {
+		margin-top:inherit;
 	}
-	.color-btn{
+	.color-btn {
 		display: inline-block;
 		margin-left: 10px;
 		margin-right: 10px;
-
 	}
-	.color-panel{
+	.color-panel {
 		margin:0;
 		margin-top: -20px;
 	}
-	.no-mobile{
+	.no-mobile {
 		display: none;
 	}
-	.score{
+	.score {
 		margin-left:10px;
 		margin-bottom: 0px;
 	}
-	.restart{
+	.restart {
 		line-height: 23px;
 		padding-top: 6px;
 		padding-bottom: 7px;
 	}
-	.game-name{
-		margin-right: 95px!important;
+	.game-name {
+		margin-right: 95px;
 	}
-}
+}\
+@media screen and (max-width: 560px)  {
+	.left-col {
 
-@media screen and (max-width: 560px) {
-	.left-col{
 		display: block;
 	}
-	.right-col{
+	.right-col {
 		display: block;
 	}
-	.winfield{
+	.winfield {
 		padding-top: 33%;
 	}
-	.winfield .restart{
+	.winfield .restart {
 		line-height: 32px;
 	}
-	.tile-12{
+	.tile-12 {
 		width:20px;
 		height:20px;
 	}
 
-	.tile-24{
+	.tile-24 {
 		width:10px;
 		height:10px;
 
 	}
-	.color-btn{
+	.color-btn {
 		display: inline-block;
 		margin-left: 4px;
 		margin-right: 4px;
 		width:40px;
 		height: 40px;
-
-
 	}
-	.mini-color-scheme-tile{
-	width:10px;
-	height:9px;
-	display:inline-block;
+	.mini-color-scheme-tile {
+		width:10px;
+		height:9px;
+		display:inline-block;
 	}
-	.mini-color-scheme-wrapper{
+	.mini-color-scheme-wrapper {
 		margin-top: 5px;
 	}
-	.mini-color-scheme{
+	.mini-color-scheme {
 		margin-right: 6px;
 		margin-left: 6px;
 	}
-	.btn{
+	.btn {
 		font-size:10px;
 	}
-	.how-to .demo-play{
+	.how-to .demo-play {
 		font-size: 10px;
 	}
-	.restart{
+	.restart {
 		line-height: 19px;
 	}
-	.game-name{
-		
-		display: block!important;
-		text-align: center!important;
-		margin-bottom: 2px!important;
-		margin-top: 2px!important;
-		margin-right: 0px!important;
+	.game-name {
+		display: block;
+		text-align: center;
+		margin-bottom: 2px;
+		margin-top: 2px;
+		margin-right: 0px;
 	}
-	.game-name span{
-		font-size: 20px!important;
+	.game-name span {
+		font-size: 20px;
 	}
-	.score {
+	.score  {
 		font-size: 14px;
 		margin-left: 3px;
 	}
 
-	.wrapper{
+	.wrapper {
 		min-width: 320px;
 		margin: 20px auto;
 	}
-	.side-menu li{
+	.menu-item  {
 		margin-bottom: 0px;
 		
 	}
-
 }
+
 @media screen and (min-width: 835px) {
-.mobile{
+.mobile {
 		display: none;
 	}
 }
