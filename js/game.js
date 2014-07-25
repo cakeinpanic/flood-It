@@ -231,7 +231,7 @@ function Game(colorScheme, callBack){
         }
         if (!restartBtn){
             restartBtn = document.createElement("div");
-            restartBtn.onclick = restartGame();
+            restartBtn.onclick = restartGame;
             winField.appendChild(restartBtn);
             restartBtn.classList.add("restart");        
         }
