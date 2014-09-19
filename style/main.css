@@ -264,14 +264,13 @@ body,html {
 	.gameName {
 		margin-right: 95px;
 	}
-}\
+}
 @media screen and (max-width: 560px)  {
-<<<<<<< HEAD
-	.left-col {
-
-=======
+	.btn-up.hidden, .btn-down.hidden{
+		left: 0px;
+	 	top: 100px;
+	}
 	.leftCol {
->>>>>>> master
 		display: block;
 	}
 	.rightCol {
