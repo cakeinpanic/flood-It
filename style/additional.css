@@ -12,9 +12,8 @@
    zoom: 1;
 }
 
-
 .disabled{
-	opacity:0;
+	opacity: 0;
 }
 .disabled .color-btn{
 	opacity: 0;
@@ -30,7 +29,7 @@
 .disabled .score{
 	opacity: 0;
 }
-.disabled .mini-color-scheme{
+.disabled .miniColorScheme{
 	opacity: 0;
 }
 

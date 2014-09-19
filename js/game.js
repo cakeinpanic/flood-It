@@ -1,4 +1,4 @@
-function Game(colorScheme, callBack){
+function Game( colorScheme, callBack ) {
 
     this.colorScheme    = colorScheme;
     this.colorSchemeId  = 0;
@@ -7,14 +7,14 @@ function Game(colorScheme, callBack){
         showGameWrapper     = callBack,
         gameSize            = 12,
         self                = this,
-        $gameField          = $('.game-field')[0],
-        $howTo              = $('.how-to')[0],
-        $colorPanel         = $('.color-panel')[0],
+        $gameField          = $('.gameField')[0],
+        $howTo              = $('.btn-howTo')[0],
+        $colorPanel         = $('.colorPanel')[0],
         $score              = $('.score'),
-        $upBtn              = $('.up')[0],
-        $downBtn            = $('.down')[0],
-        $restart            = $('.restart')[0],
-        $schemePanel        = $('.mini-color-scheme-wrapper')[0],
+        $upBtn              = $('.btn-up')[0],
+        $downBtn            = $('.btn-down')[0],
+        $restart            = $('.btn-restart')[0],
+        $schemePanel        = $('.miniColorScheme--wrapper')[0],
 
         numColors           = this.colorScheme[this.colorSchemeId].length;
         grid                = null,
@@ -41,7 +41,7 @@ function Game(colorScheme, callBack){
 
         for (i = 0; i < numColors; i++) {
             var btn = document.createElement("div");
-            btn.setAttribute("class","color-btn");
+            btn.setAttribute("class","btn-color");
             btn.classList.add("animation-order-" + (i + 1));
             var newBtn = new Button(btn, i, this);
             buttons.push(newBtn);
@@ -50,7 +50,7 @@ function Game(colorScheme, callBack){
 
         for (i = 0; i < this.colorScheme.length; i++) {
             var scheme = document.createElement("div");
-            scheme.setAttribute("class","mini-color-scheme");
+            scheme.setAttribute("class","miniColorScheme");
             var miniColorScheme = new Scheme(scheme, i, this);
             $schemePanel.appendChild(scheme);
         }   
@@ -92,7 +92,7 @@ function Game(colorScheme, callBack){
         numColors = this.colorScheme[this.colorSchemeId].length;
         grid.updateColors();
         buttons.forEach(function(btn){
-            btn.updateColor()
+            btn.updateColor();
         });
     }
     
@@ -100,6 +100,8 @@ function Game(colorScheme, callBack){
         stopDemo();
         gameSize = 24;
         maxSteps = 100;
+        $upBtn.classList.add("hidden");
+        $downBtn.classList.remove("hidden");
         drawGameField();
     }
 
@@ -107,6 +109,8 @@ function Game(colorScheme, callBack){
         stopDemo();
         gameSize = 12;
         maxSteps = 20;
+        $upBtn.classList.remove("hidden");
+        $downBtn.classList.add("hidden");
         drawGameField();
     }
     
@@ -173,7 +177,7 @@ function Game(colorScheme, callBack){
 
         for (var i = 0; i < gameSize; i++) {
             var row =  document.createElement("ul");
-            row.setAttribute("class", "grid-row cf");
+            row.setAttribute("class", "gridRow cf");
             $gameField.appendChild(row);
             grid.addRow(new Array);
 
@@ -233,7 +237,7 @@ function Game(colorScheme, callBack){
             restartBtn = document.createElement("div");
             restartBtn.onclick = restartGame;
             winField.appendChild(restartBtn);
-            restartBtn.classList.add("restart");        
+            restartBtn.classList.add("btn-restart");        
         }
         if (win){
             winFieldText.innerHTML = "You won in " + steps + " steps";
